@@ -49,3 +49,7 @@ C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\obj\Debug\LoaderApiAnd
 C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\obj\Debug\LoaderApiAndAdmin.pdb
 C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\AutoMapper.dll
 C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\AutoMapper.xml
+C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\EntityFramework.dll
+C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\EntityFramework.SqlServer.dll
+C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\EntityFramework.xml
+C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\EntityFramework.SqlServer.xml
