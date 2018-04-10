@@ -17,6 +17,7 @@ namespace LoadProject.Controllers.AdminController
 
         public ActionResult viewAvailableOrders()
         {
+            // AllOrderS From Order Table
 
             return View();
         }
