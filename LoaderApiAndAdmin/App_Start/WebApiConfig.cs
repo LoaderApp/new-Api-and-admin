@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace LoaderApiAndAdmin
@@ -16,9 +17,16 @@ namespace LoaderApiAndAdmin
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{Action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // Adding formatter for Json   
+            config.Formatters.JsonFormatter.MediaTypeMappings.Add(
+                new QueryStringMapping("type", "json", new MediaTypeHeaderValue("application/json")));
+
+
+            config.EnableCors();
         }
     }
 }
