@@ -38,7 +38,7 @@ namespace LoaderAppApi.Controllers
         public dynamic SignIn(SignInInput input)
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
-            var userEntity = dbContext.Users.FirstOrDefault(e => e.PhoneNo == input.mobileNo && e.Password == input.password);
+            var userEntity = dbContext.Users.FirstOrDefault(e => e.PhoneNo == input.PhoneNo && e.Password == input.Password);
             if (userEntity == null)
             {
                 return new
@@ -200,8 +200,8 @@ namespace LoaderAppApi.Controllers
 
     public class SignInInput
     {
-        public string mobileNo { get; set; }
-        public string password { get; set; }
+        public string PhoneNo { get; set; }
+        public string Password { get; set; }
 
     }
 

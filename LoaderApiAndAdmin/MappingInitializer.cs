@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LoaderApiAndAdmin.DataBase;
+using LoaderAppApi.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace LoaderApiAndAdmin
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<User, User>();
+
+
+
+                cfg.CreateMap<User, SignInInput>();
+                cfg.CreateMap<SignInInput, User>();
 
                 //cfg.CreateMap<Item, ItemDto>();
                 //cfg.CreateMap<ItemDto, Item>();
