@@ -12,6 +12,7 @@ namespace LoaderAppApi.Controllers
     [EnableCorsAttribute("*", "*", "*", SupportsCredentials = true)]
     public class LoadAppController : ApiController
     {
+        [HttpPost]
         public dynamic UpdateProfile(User Input)
         {
             try {
@@ -32,7 +33,7 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
-
+        [HttpPost]
         public dynamic UpdateVehicle(Vehicle Input)
         {
             try
@@ -54,7 +55,7 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
-
+        [HttpPost]
         public dynamic PlaceAnOrder(Order Input)
         {
             try
@@ -76,7 +77,7 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
-
+        [HttpPost]
         public dynamic ViewOrderDetailsOfClient(ViewOrderDetailsOfClientInput Input)
         {
             try
@@ -95,7 +96,7 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
-
+        [HttpPost]
         public dynamic AcceptOrDeclineOffer(AcceptOrDeclineOfferInput Input)
         {
             try
@@ -118,7 +119,7 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
-
+        [HttpPost]
         public dynamic ViewOrderDetailsOfTransportOwner(ViewOrderDetailsOfTransportOwnerIput Input)
         {
             try
@@ -136,7 +137,7 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
-
+        [HttpPost]
         public dynamic ViewAvailableOrdersToBid()
         {
             try
