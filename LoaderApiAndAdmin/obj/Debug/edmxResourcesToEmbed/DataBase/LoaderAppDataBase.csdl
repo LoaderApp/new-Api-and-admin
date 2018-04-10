@@ -73,7 +73,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ImageData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ImageType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Users" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_User_Images" FromRole="Image" ToRole="User" />
@@ -83,7 +83,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ClientId" Type="Int32" />
     <Property Name="TransportOwnerId" Type="Int32" />
     <Property Name="OrderPickup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -105,7 +105,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="OrderId" Type="Int32" Nullable="false" />
     <Property Name="TransportOwnerId" Type="Int32" Nullable="false" />
     <Property Name="QuoteBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -136,7 +136,7 @@
     <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="DevId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DevId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Image" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_User_Images" FromRole="User" ToRole="Image" />
     <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="User" ToRole="Quote" />
     <NavigationProperty Name="Vehicles" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User" FromRole="User" ToRole="Vehicle" />
@@ -145,7 +145,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserId" Type="Int32" Nullable="false" />
     <Property Name="VehicleImgId" Type="Int32" />
     <Property Name="VehicleRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

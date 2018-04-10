@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ImageData" Type="nvarchar(max)" />
     <Property Name="ImageType" Type="varchar" MaxLength="50" />
   </EntityType>
@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ClientId" Type="int" />
     <Property Name="TransportOwnerId" Type="int" />
     <Property Name="OrderPickup" Type="varchar" MaxLength="50" />
@@ -33,7 +33,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OrderId" Type="int" Nullable="false" />
     <Property Name="TransportOwnerId" Type="int" Nullable="false" />
     <Property Name="QuoteBudget" Type="varchar" MaxLength="50" />
@@ -62,13 +62,13 @@
     <Property Name="CompanyName" Type="varchar" MaxLength="50" />
     <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
     <Property Name="Role" Type="varchar" MaxLength="50" />
-    <Property Name="DevId" Type="varchar" MaxLength="50" />
+    <Property Name="DevId" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Vehicle">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="VehicleImgId" Type="int" />
     <Property Name="VehicleRegNo" Type="varchar" MaxLength="50" />
