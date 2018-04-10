@@ -1,93 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="db4548dfcaf1014e63b356a82e00d3f007ModelStoreContainer" CdmEntityContainer="LoaderAppEntites">
-    <EntitySetMapping Name="Images">
-      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Image">
-        <MappingFragment StoreEntitySet="Images">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
-          <ScalarProperty Name="ImageType" ColumnName="ImageType" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Order">
-        <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-          <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
-          <ScalarProperty Name="OrderPickup" ColumnName="OrderPickup" />
-          <ScalarProperty Name="OrderDropOff" ColumnName="OrderDropOff" />
-          <ScalarProperty Name="OrderComodity" ColumnName="OrderComodity" />
-          <ScalarProperty Name="OrderWeight" ColumnName="OrderWeight" />
-          <ScalarProperty Name="OrderPickUpDate" ColumnName="OrderPickUpDate" />
-          <ScalarProperty Name="OrderLength" ColumnName="OrderLength" />
-          <ScalarProperty Name="OrderWidth" ColumnName="OrderWidth" />
-          <ScalarProperty Name="OrderHeight" ColumnName="OrderHeight" />
-          <ScalarProperty Name="OrderReceiverName" ColumnName="OrderReceiverName" />
-          <ScalarProperty Name="OrderReceiverCompanyName" ColumnName="OrderReceiverCompanyName" />
-          <ScalarProperty Name="OrderAdditionalDetails" ColumnName="OrderAdditionalDetails" />
-          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-          <ScalarProperty Name="OrderBudget" ColumnName="OrderBudget" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Quotes">
-      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Quote">
-        <MappingFragment StoreEntitySet="Quotes">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-          <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
-          <ScalarProperty Name="QuoteBudget" ColumnName="QuoteBudget" />
-          <ScalarProperty Name="QuoteStatus" ColumnName="QuoteStatus" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ImgId" ColumnName="ImgId" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-          <ScalarProperty Name="Role" ColumnName="Role" />
-          <ScalarProperty Name="DevId" ColumnName="DevId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Vehicles">
-      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle">
-        <MappingFragment StoreEntitySet="Vehicle">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="VehicleImgId" ColumnName="VehicleImgId" />
-          <ScalarProperty Name="VehicleRegNo" ColumnName="VehicleRegNo" />
-          <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
-          <ScalarProperty Name="VehichleCompany" ColumnName="VehichleCompany" />
-          <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
-          <ScalarProperty Name="VehicleNoOfWheels" ColumnName="VehicleNoOfWheels" />
-          <ScalarProperty Name="VehicleLength" ColumnName="VehicleLength" />
-          <ScalarProperty Name="VehicleWidth" ColumnName="VehicleWidth" />
-          <ScalarProperty Name="VehichleHeight" ColumnName="VehichleHeight" />
-          <ScalarProperty Name="VehicleIsBooked" ColumnName="VehicleIsBooked" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_dropdiagram" />
@@ -112,5 +25,92 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Image">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderBudget" ColumnName="OrderBudget" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="OrderAdditionalDetails" ColumnName="OrderAdditionalDetails" />
+          <ScalarProperty Name="OrderReceiverCompanyName" ColumnName="OrderReceiverCompanyName" />
+          <ScalarProperty Name="OrderReceiverName" ColumnName="OrderReceiverName" />
+          <ScalarProperty Name="OrderHeight" ColumnName="OrderHeight" />
+          <ScalarProperty Name="OrderWidth" ColumnName="OrderWidth" />
+          <ScalarProperty Name="OrderLength" ColumnName="OrderLength" />
+          <ScalarProperty Name="OrderPickUpDate" ColumnName="OrderPickUpDate" />
+          <ScalarProperty Name="OrderWeight" ColumnName="OrderWeight" />
+          <ScalarProperty Name="OrderComodity" ColumnName="OrderComodity" />
+          <ScalarProperty Name="OrderDropOff" ColumnName="OrderDropOff" />
+          <ScalarProperty Name="OrderPickup" ColumnName="OrderPickup" />
+          <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quotes">
+      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Quote">
+        <MappingFragment StoreEntitySet="Quotes">
+          <ScalarProperty Name="QuoteStatus" ColumnName="QuoteStatus" />
+          <ScalarProperty Name="QuoteBudget" ColumnName="QuoteBudget" />
+          <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="DevId" ColumnName="DevId" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ImgId" ColumnName="ImgId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicle">
+          <ScalarProperty Name="VehicleIsBooked" ColumnName="VehicleIsBooked" />
+          <ScalarProperty Name="VehichleHeight" ColumnName="VehichleHeight" />
+          <ScalarProperty Name="VehicleWidth" ColumnName="VehicleWidth" />
+          <ScalarProperty Name="VehicleLength" ColumnName="VehicleLength" />
+          <ScalarProperty Name="VehicleNoOfWheels" ColumnName="VehicleNoOfWheels" />
+          <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+          <ScalarProperty Name="VehichleCompany" ColumnName="VehichleCompany" />
+          <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+          <ScalarProperty Name="VehicleRegNo" ColumnName="VehicleRegNo" />
+          <ScalarProperty Name="VehicleImgId" ColumnName="VehicleImgId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

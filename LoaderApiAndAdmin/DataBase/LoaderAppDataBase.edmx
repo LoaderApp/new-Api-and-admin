@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db4548dfcaf1014e63b356a82e00d3f007Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db4548dfcaf1014e63b356a82e00d3f007Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Images">
           <Key>
             <PropertyRef Name="Id" />
@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ImgId" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
@@ -205,189 +205,11 @@
             <End Role="Vehicle" EntitySet="Vehicle" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db4548dfcaf1014e63b356a82e00d3f007Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Image">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ImageData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ImageType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_User_Images" FromRole="Images" ToRole="User" />
-          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicle_Images" FromRole="Images" ToRole="Vehicle" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ClientId" Type="Int32" />
-          <Property Name="TransportOwnerId" Type="Int32" />
-          <Property Name="OrderPickup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderDropOff" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderComodity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderPickUpDate" Type="DateTime" Precision="3" />
-          <Property Name="OrderLength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderReceiverCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderAdditionalDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Quotes" Relationship="Self.FK_Quotes_Order" FromRole="Order" ToRole="Quotes" />
-        </EntityType>
-        <EntityType Name="Quote">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <Property Name="TransportOwnerId" Type="Int32" Nullable="false" />
-          <Property Name="QuoteBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="QuoteStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_Quotes_Order" FromRole="Quotes" ToRole="Order" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Quotes_User" FromRole="Quotes" ToRole="User" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="ImgId" Type="Int32" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DevId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Image" Relationship="Self.FK_User_Images" FromRole="User" ToRole="Images" />
-          <NavigationProperty Name="Quotes" Relationship="Self.FK_Quotes_User" FromRole="User" ToRole="Quotes" />
-          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicle_User" FromRole="User" ToRole="Vehicle" />
-        </EntityType>
-        <EntityType Name="Vehicle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="VehicleImgId" Type="Int32" />
-          <Property Name="VehicleRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehichleCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleNoOfWheels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleLength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehichleHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleIsBooked" Type="Boolean" />
-          <NavigationProperty Name="Image" Relationship="Self.FK_Vehicle_Images" FromRole="Vehicle" ToRole="Images" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Vehicle_User" FromRole="Vehicle" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_User_Images">
-          <End Role="Images" Type="Self.Image" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Images">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="ImgId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehicle_Images">
-          <End Role="Images" Type="Self.Image" Multiplicity="0..1" />
-          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Images">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Vehicle">
-              <PropertyRef Name="VehicleImgId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Quotes_Order">
-          <End Role="Order" Type="Self.Order" Multiplicity="1" />
-          <End Role="Quotes" Type="Self.Quote" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Order">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Quotes">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Quotes_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Quotes" Type="Self.Quote" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Quotes">
-              <PropertyRef Name="TransportOwnerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vehicle_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Vehicle" Type="Self.Vehicle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Vehicle">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="LoaderAppEntites" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Images" EntityType="Self.Image" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="Quotes" EntityType="Self.Quote" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
-          <AssociationSet Name="FK_User_Images" Association="Self.FK_User_Images">
-            <End Role="Images" EntitySet="Images" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehicle_Images" Association="Self.FK_Vehicle_Images">
-            <End Role="Images" EntitySet="Images" />
-            <End Role="Vehicle" EntitySet="Vehicles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Quotes_Order" Association="Self.FK_Quotes_Order">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="Quotes" EntitySet="Quotes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Quotes_User" Association="Self.FK_Quotes_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Quotes" EntitySet="Quotes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vehicle_User" Association="Self.FK_Vehicle_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Vehicle" EntitySet="Vehicles" />
-          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -418,6 +240,32 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Images" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Image" />
+          <EntitySet Name="Orders" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Order" />
+          <EntitySet Name="Quotes" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" />
+          <EntitySet Name="sysdiagrams" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram" />
+          <EntitySet Name="Users" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.User" />
+          <EntitySet Name="Vehicles" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" />
+          <AssociationSet Name="FK_User_Images" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_User_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicle_Images" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_Images">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_Order" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Quote" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Quotes_User" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Quote" EntitySet="Quotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicle_User" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vehicle" EntitySet="Vehicles" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -430,99 +278,163 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ImageData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_User_Images" FromRole="Image" ToRole="User" />
+          <NavigationProperty Name="Vehicles" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_Images" FromRole="Image" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="TransportOwnerId" Type="Int32" />
+          <Property Name="OrderPickup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDropOff" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderComodity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderPickUpDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderLength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderReceiverCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderAdditionalDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Order" ToRole="Quote" />
+        </EntityType>
+        <EntityType Name="Quote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="TransportOwnerId" Type="Int32" Nullable="false" />
+          <Property Name="QuoteBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QuoteStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Quote" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="Quote" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImgId" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DevId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Image" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_User_Images" FromRole="User" ToRole="Image" />
+          <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="User" ToRole="Quote" />
+          <NavigationProperty Name="Vehicles" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User" FromRole="User" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="VehicleImgId" Type="Int32" />
+          <Property Name="VehicleRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehichleCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleNoOfWheels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleLength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehichleHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleIsBooked" Type="Boolean" />
+          <NavigationProperty Name="Image" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_Images" FromRole="Vehicle" ToRole="Image" />
+          <NavigationProperty Name="User" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User" FromRole="Vehicle" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_User_Images">
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ImgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicle_Images">
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Image" Role="Image" Multiplicity="0..1" />
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="VehicleImgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_Order">
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" Role="Quote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quote">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Quotes_User">
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.User" Role="User" Multiplicity="1" />
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" Role="Quote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quote">
+              <PropertyRef Name="TransportOwnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicle_User">
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.User" Role="User" Multiplicity="1" />
+          <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" Role="Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vehicle">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="db4548dfcaf1014e63b356a82e00d3f007ModelStoreContainer" CdmEntityContainer="LoaderAppEntites">
-          <EntitySetMapping Name="Images">
-            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Image">
-              <MappingFragment StoreEntitySet="Images">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
-                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
-                <ScalarProperty Name="OrderPickup" ColumnName="OrderPickup" />
-                <ScalarProperty Name="OrderDropOff" ColumnName="OrderDropOff" />
-                <ScalarProperty Name="OrderComodity" ColumnName="OrderComodity" />
-                <ScalarProperty Name="OrderWeight" ColumnName="OrderWeight" />
-                <ScalarProperty Name="OrderPickUpDate" ColumnName="OrderPickUpDate" />
-                <ScalarProperty Name="OrderLength" ColumnName="OrderLength" />
-                <ScalarProperty Name="OrderWidth" ColumnName="OrderWidth" />
-                <ScalarProperty Name="OrderHeight" ColumnName="OrderHeight" />
-                <ScalarProperty Name="OrderReceiverName" ColumnName="OrderReceiverName" />
-                <ScalarProperty Name="OrderReceiverCompanyName" ColumnName="OrderReceiverCompanyName" />
-                <ScalarProperty Name="OrderAdditionalDetails" ColumnName="OrderAdditionalDetails" />
-                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-                <ScalarProperty Name="OrderBudget" ColumnName="OrderBudget" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Quotes">
-            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Quote">
-              <MappingFragment StoreEntitySet="Quotes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
-                <ScalarProperty Name="QuoteBudget" ColumnName="QuoteBudget" />
-                <ScalarProperty Name="QuoteStatus" ColumnName="QuoteStatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ImgId" ColumnName="ImgId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="DevId" ColumnName="DevId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vehicles">
-            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle">
-              <MappingFragment StoreEntitySet="Vehicle">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="VehicleImgId" ColumnName="VehicleImgId" />
-                <ScalarProperty Name="VehicleRegNo" ColumnName="VehicleRegNo" />
-                <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
-                <ScalarProperty Name="VehichleCompany" ColumnName="VehichleCompany" />
-                <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
-                <ScalarProperty Name="VehicleNoOfWheels" ColumnName="VehicleNoOfWheels" />
-                <ScalarProperty Name="VehicleLength" ColumnName="VehicleLength" />
-                <ScalarProperty Name="VehicleWidth" ColumnName="VehicleWidth" />
-                <ScalarProperty Name="VehichleHeight" ColumnName="VehichleHeight" />
-                <ScalarProperty Name="VehicleIsBooked" ColumnName="VehicleIsBooked" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_dropdiagram" />
@@ -547,6 +459,93 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db4548dfcaf1014e63b356a82e00d3f007Model.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderBudget" ColumnName="OrderBudget" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderAdditionalDetails" ColumnName="OrderAdditionalDetails" />
+                <ScalarProperty Name="OrderReceiverCompanyName" ColumnName="OrderReceiverCompanyName" />
+                <ScalarProperty Name="OrderReceiverName" ColumnName="OrderReceiverName" />
+                <ScalarProperty Name="OrderHeight" ColumnName="OrderHeight" />
+                <ScalarProperty Name="OrderWidth" ColumnName="OrderWidth" />
+                <ScalarProperty Name="OrderLength" ColumnName="OrderLength" />
+                <ScalarProperty Name="OrderPickUpDate" ColumnName="OrderPickUpDate" />
+                <ScalarProperty Name="OrderWeight" ColumnName="OrderWeight" />
+                <ScalarProperty Name="OrderComodity" ColumnName="OrderComodity" />
+                <ScalarProperty Name="OrderDropOff" ColumnName="OrderDropOff" />
+                <ScalarProperty Name="OrderPickup" ColumnName="OrderPickup" />
+                <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quotes">
+            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Quote">
+              <MappingFragment StoreEntitySet="Quotes">
+                <ScalarProperty Name="QuoteStatus" ColumnName="QuoteStatus" />
+                <ScalarProperty Name="QuoteBudget" ColumnName="QuoteBudget" />
+                <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="DevId" ColumnName="DevId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ImgId" ColumnName="ImgId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="VehicleIsBooked" ColumnName="VehicleIsBooked" />
+                <ScalarProperty Name="VehichleHeight" ColumnName="VehichleHeight" />
+                <ScalarProperty Name="VehicleWidth" ColumnName="VehicleWidth" />
+                <ScalarProperty Name="VehicleLength" ColumnName="VehicleLength" />
+                <ScalarProperty Name="VehicleNoOfWheels" ColumnName="VehicleNoOfWheels" />
+                <ScalarProperty Name="VehicleColor" ColumnName="VehicleColor" />
+                <ScalarProperty Name="VehichleCompany" ColumnName="VehichleCompany" />
+                <ScalarProperty Name="VehicleName" ColumnName="VehicleName" />
+                <ScalarProperty Name="VehicleRegNo" ColumnName="VehicleRegNo" />
+                <ScalarProperty Name="VehicleImgId" ColumnName="VehicleImgId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
