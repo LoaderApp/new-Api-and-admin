@@ -156,6 +156,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdminController\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoadAppController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataBase\Image.cs">
       <DependentUpon>LoaderAppDataBase.tt</DependentUpon>
