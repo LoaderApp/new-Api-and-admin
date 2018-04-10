@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-
+using LoaderApiAndAdmin.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ContactManagementSystem26_10_17
+namespace LoaderApiAndAdmin
 {
     public static class MappingInitializer
     {
@@ -13,8 +13,7 @@ namespace ContactManagementSystem26_10_17
         {
             Mapper.Initialize(cfg =>
             {
-                //cfg.CreateMap<User, UserDto>();
-                //cfg.CreateMap<UserDto, User>();
+                cfg.CreateMap<User, User>();
 
                 //cfg.CreateMap<Item, ItemDto>();
                 //cfg.CreateMap<ItemDto, Item>();
