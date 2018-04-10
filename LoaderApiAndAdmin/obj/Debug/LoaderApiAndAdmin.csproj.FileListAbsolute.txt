@@ -47,3 +47,5 @@ C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\System.Web.Http.We
 C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\obj\Debug\LoaderApiAndAdmin.csprojResolveAssemblyReference.cache
 C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\obj\Debug\LoaderApiAndAdmin.dll
 C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\obj\Debug\LoaderApiAndAdmin.pdb
+C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\AutoMapper.dll
+C:\Users\Abc\Desktop\api-and-adminpanel\LoaderApiAndAdmin\bin\AutoMapper.xml
