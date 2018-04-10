@@ -160,6 +160,8 @@ namespace LoaderAppApi.Controllers
 
     }
 
+
+    // dto's
     public class ViewOrderDetailsOfClientInput
     {
         public int ClientId { get; set; }
