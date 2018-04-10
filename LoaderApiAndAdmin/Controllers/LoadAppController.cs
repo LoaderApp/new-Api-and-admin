@@ -45,6 +45,7 @@ namespace LoaderAppApi.Controllers
                 {
                     IsSignedIn = false,
                     Message = "Check Phone no or password",
+                    UserData = "null"
                 };
 
             }
@@ -54,7 +55,7 @@ namespace LoaderAppApi.Controllers
                 {
                     IsSignedIn = true,
                     Message = "SignIn sucessfull",
-
+                    UserData = userEntity
 
                 };
 
