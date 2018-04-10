@@ -33,6 +33,36 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
+
+        [HttpPost]
+        public dynamic SignIn(SignInInput input)
+        {
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            var userEntity = dbContext.Users.FirstOrDefault(e => e.PhoneNo == input.mobileNo && e.Password == input.password);
+            if (userEntity == null)
+            {
+                return new
+                {
+                    IsSignedIn = false,
+                    Message = "Check Phone no or password",
+                };
+
+            }
+            else {
+
+                return new
+                {
+                    IsSignedIn = true,
+                    Message = "SignIn sucessfull",
+
+
+                };
+
+            }
+
+
+
+        }
         [HttpPost]
         public dynamic UpdateVehicle(Vehicle Input)
         {
@@ -165,6 +195,13 @@ namespace LoaderAppApi.Controllers
     public class ViewOrderDetailsOfClientInput
     {
         public int ClientId { get; set; }
+
+    }
+
+    public class SignInInput
+    {
+        public string mobileNo { get; set; }
+        public string password { get; set; }
 
     }
 
