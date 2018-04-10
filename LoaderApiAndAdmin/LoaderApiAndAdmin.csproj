@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -181,6 +182,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\AcceptQuote.cshtml" />
+    <Content Include="Views\Admin\AdminMain.cshtml" />
+    <Content Include="Views\Admin\changeStatusToCompleted.cshtml" />
+    <Content Include="Views\Admin\changeStatusToTransit.cshtml" />
+    <Content Include="Views\Admin\updateOrderAsConfirmedToTransportOwner.cshtml" />
+    <Content Include="Views\Admin\viewAvailableOrders.cshtml" />
+    <Content Include="Views\Admin\viewAvailableQuotes.cshtml" />
+    <Content Include="Views\Admin\viewQuoteDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

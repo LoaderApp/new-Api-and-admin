@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Admin";
+}
+
+<body>
+
+    <div class="row" style="text-align:center;">
+        <h1>Welcome to Admin panel</h1>
+    </div>
+
+    <div class="row" style="margin-top:100px; align-content:center;">
+
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+
+            <div class="row">
+                <button type="button" onclick="location.href='@Url.Action("viewAvailableOrders", "Admin")'">View Available Orders</button>
+
+            </div>
+            <div class="row" style="margin-top:30px;">
+                <button type="button" onclick="location.href='@Url.Action("viewAvailableQuotes", "Admin")'">View Available Quotes</button>
+
+            </div>
+
+            <div class="row" style="margin-top:30px;">
+                <button type="button" onclick="location.href='@Url.Action("updateOrderAsConfirmedToTransportOwner", "Admin")'">update order as Confirmed to Transport Owner</button>
+
+            </div>
+
+            <div class="row" style="margin-top:30px;">
+                <button type="button" onclick="location.href='@Url.Action("changeStatusToTransit", "Admin")'">Change Status of order to Transit</button>
+
+            </div>
+            <div class="row" style="margin-top:30px;">
+                <button type="button" onclick="location.href='@Url.Action("changeStatusToCompleted", "Admin")'">Change Status of order to Completed</button>
+
+            </div>
+
+
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+
+</body>
