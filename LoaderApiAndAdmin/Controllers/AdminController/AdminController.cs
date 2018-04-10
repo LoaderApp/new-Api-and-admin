@@ -24,7 +24,7 @@ namespace LoadProject.Controllers.AdminController
 
         public ActionResult viewAvailableQuotes()
         {
-
+            // All From Order Table
             return View();
         }
 
