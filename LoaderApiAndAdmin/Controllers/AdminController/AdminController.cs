@@ -61,7 +61,7 @@ namespace LoadProject.Controllers.AdminController
         public ActionResult viewAvailableQuotes()
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
-            ViewBag.QuotesData = dbContext.Orders.ToList();
+            ViewBag.QuotesData = dbContext.Orders.Where(e => e.OrderStatus == "Pending" || e.OrderStatus == "Rejected").ToList();
             return View();
 
         }

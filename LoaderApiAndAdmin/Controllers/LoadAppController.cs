@@ -231,14 +231,15 @@ namespace LoaderAppApi.Controllers
                 dbContext.SaveChanges();
                 return new
                 {
-                    IsOrderUpdated = true,
+                    IsOrderAccepted = true,
+                    ErrorException = "null"
                 };
             }
             catch (Exception ex)
             {
                 return new
                 {
-                    IsOrderUpdated = false,
+                    IsOrderAccepted = false,
                     ErrorException = ex
                 };
             }
