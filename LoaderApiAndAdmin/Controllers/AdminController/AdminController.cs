@@ -12,25 +12,45 @@ namespace LoadProject.Controllers.AdminController
         // GET: AdminMain
         public ActionResult AdminMain()
         {
-            return View();
+            //Session["SignIn"] = false;
+            if (Session["SignIn"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("viewAvailableOrders");
         }
-        [HttpGet]
+
+
         public ActionResult viewAvailableOrders()
         {
-
-
+           // Session["SignIn"] = true;
+            var listOfOrders = new List<Order>();
+            LoaderAppEntites dbContext = new LoaderAppEntites();
             // AllOrderS From Order Table
-
+            ViewBag.OrderData = dbContext.Orders.ToList();
             return View();
         }
 
         public ActionResult viewAvailableQuotes()
         {
-            // All From Order Table
+            var listOfOrders = new List<Order>();
+            listOfOrders.Add(new Order()
+            {
+                Id = 1,
+                ClientId = 2,
+                TransportOwnerId = 3,
+                OrderPickup = "Lahore",
+                OrderDropOff = "Multan",
+                OrderComodity = "",
+                OrderWeight = "",
+            });
+            // AllOrderS From Order Table
+            ViewBag.QuotesData = listOfOrders;
             return View();
+
         }
 
-        public ActionResult viewQuoteDetails()
+        public ActionResult viewQuoteDetails(int id)
         {
 
             return View();
