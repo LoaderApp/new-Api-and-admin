@@ -37,7 +37,19 @@
                     <td>@order.OrderReceiverName</td>
                     <td>@order.OrderReceiverCompanyName</td>
                     <td>@order.OrderAdditionalDetails</td>
-                    <td>@order.OrderStatus</td>
+                    @if (order.OrderStatus == "Pending")
+                    {
+                        <td  style="color:red">
+                            @order.OrderStatus
+
+                        </td>
+
+                    }
+                    else
+                    {
+                        <td>@order.OrderStatus</td>
+
+                    }
                     <td>@order.OrderBudget</td>
                 </tr>
             }
