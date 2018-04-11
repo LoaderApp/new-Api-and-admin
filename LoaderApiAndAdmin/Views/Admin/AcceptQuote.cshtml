@@ -1,15 +1,29 @@
-﻿
+﻿@model LoaderApiAndAdmin.Models.SubmitQuoteInput
 @{
     ViewBag.Title = "AcceptQuote";
 }
 
 <body>
 
+    
+    <h3>Here are the details of the quote</h3>
+
+    
+    <p>Quoted Budget = @ViewBag.quoteData.QuoteBudget</p>
+    <p>Transport Owner Name = @ViewBag.quoteData.TransportOwnerName</p>
+
+    <p>Add your commission to the Budget and send to the client by clicking submit button</p>
+    
+    @using (Html.BeginForm("SubmitQuote", "Admin", new { id = ViewBag.quoteData.Id }, FormMethod.Post))
+    {
+        @Html.TextBoxFor(model => model.comission)
 
 
+        <button type="submit">Submit</button>
+    }
 
-
-
+    @*<input type="text" placeholder="Enter your comission here" inputmode="numeric" id="commisionTextBox" />
+    <a href=@Url.Action("SubmitQuote", "Admin", new { id = ViewBag.quoteData.Id  })>Submit</a>*@
 
 
 </body>

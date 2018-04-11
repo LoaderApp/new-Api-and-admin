@@ -1,4 +1,5 @@
 ﻿using LoaderApiAndAdmin.DataBase;
+using LoaderApiAndAdmin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,22 +71,67 @@ namespace LoadProject.Controllers.AdminController
             ViewBag.QuotesDetail = new LoaderAppEntites().Quotes.Where(e => e.OrderId == id).ToList();
             return View();
         }
-        public ActionResult AcceptQuote(int id)
+        public ActionResult AcceptQuote(int id =0)
         {
+
+
+            //LoaderAppEntites dbContext = new LoaderAppEntites();
+            //var quote= dbContext.Quotes.Where(e => e.Id == id).FirstOrDefault();
+            ////hamza
+            //var orderToUpdate = dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
+            //orderToUpdate.OrderStatus = "Waiting For Budget Approval";
+            //orderToUpdate.TransportOwnerId = quote.TransportOwnerId;
+            //var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
+            //vehicle.VehicleIsBooked = true;
+
+
+            ////hamza
+
+
+
+            //quote.QuoteStatus = "Waiting For Budget Approval";
+            //var order= dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
+            //order.Quotes.ToList().Where(e => e.Id != id).ToList().ForEach(
+            //    e =>
+            //    {
+            //        dbContext.Quotes.Remove(e);
+            //    }
+            //    );
+            //dbContext.SaveChanges();
+
             LoaderAppEntites dbContext = new LoaderAppEntites();
             var quote= dbContext.Quotes.Where(e => e.Id == id).FirstOrDefault();
-            //hamza
+
+            ViewBag.quoteData = quote;
+
+
+
+            return View();
+        }
+
+        public ActionResult SubmitQuote(SubmitQuoteInput model, int id )
+        {
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            var quote = dbContext.Quotes.Where(e => e.Id == id).FirstOrDefault();
+            //hamza start
+
+            Double BudgetForClient = Double.Parse(quote.QuoteBudget) + model.comission;
+
             var orderToUpdate = dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
             orderToUpdate.OrderStatus = "Waiting For Budget Approval";
             orderToUpdate.TransportOwnerId = quote.TransportOwnerId;
+            orderToUpdate.OrderBudget =  BudgetForClient.ToString();
+
             var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
             vehicle.VehicleIsBooked = true;
-            
+
+
+            //hamza end
 
 
 
             quote.QuoteStatus = "Waiting For Budget Approval";
-            var order= dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
+            var order = dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
             order.Quotes.ToList().Where(e => e.Id != id).ToList().ForEach(
                 e =>
                 {
@@ -95,7 +141,7 @@ namespace LoadProject.Controllers.AdminController
             dbContext.SaveChanges();
 
 
-            return View();
+            return RedirectToAction("viewAvailableQuotes");
         }
 
         public ActionResult updateOrderAsConfirmedToTransportOwner()
