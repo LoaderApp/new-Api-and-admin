@@ -219,9 +219,9 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
-        // comment added
+        // request parameter an array so that it could be accessed by volley in android as response is a json array
         [HttpPost]
-        public dynamic ViewAvailableOrdersToBid()
+        public dynamic ViewAvailableOrdersToBid(AcceptOrDeclineOfferInput [] Input)
         {
             try
             {
