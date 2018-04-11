@@ -21,141 +21,27 @@
         <th>Budget</th>
         <th>See Quotes</th>
     </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghi</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-    </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghi</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-
-    </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghi</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-
-    </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghi</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-
-    </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghi</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-
-    </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghi</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-
-    </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghi</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-
-    </tr>
-    <tr>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>abc</td>
-        <td>def</td>
-        <td>ghi</td>
-        <td>ghiiiiiiiiiiiii</td>
-        <td><a href=@Url.Action("viewQuoteDetails","Admin")>proceed to view Quotes</a></td>
-
-    </tr>
+   @{
+       foreach (var order in @ViewBag.QuotesData)
+       {
+        <tr>
+            <td>@order.OrderPickup</td>
+            <td>@order.OrderDropOff</td>
+            <td>@order.OrderComodity</td>
+            <td>@order.OrderWeight</td>
+            <td>@order.OrderPickUpDate</td>
+            <td>@order.OrderLength</td>
+            <td>@order.OrderWidth</td>
+            <td>@order.OrderHeight</td>
+            <td>@order.OrderReceiverName</td>
+            <td>@order.OrderReceiverCompanyName</td>
+            <td>@order.OrderAdditionalDetails</td>
+            <td>@order.OrderStatus</td>
+            <td>@order.OrderBudget</td>
+            <td><a href=@Url.Action("viewQuoteDetails","Admin",new { id=order.Id})>proceed to view Quotes</a></td>
+        </tr>
+       }
+}
 </table>
 
 </body>

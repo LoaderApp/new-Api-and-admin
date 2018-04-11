@@ -154,12 +154,14 @@ namespace LoaderAppApi.Controllers
             }
         }
         [HttpPost]
-        public dynamic ViewOrderDetailsOfClient(ViewOrderDetailsOfClientInput Input)
+        public dynamic ViewOrderDetailsOfClient(ViewOrderDetailsOfClientInput [] Input)
         {
             try
             {
+                var inputClientId = Input[0].ClientId;
+
                 LoaderAppEntites dbContext = new LoaderAppEntites();
-                var orderist=  dbContext.Orders.Where(e=>e.ClientId==Input.ClientId).ToList();
+                var orderist=  dbContext.Orders.Where(e=>e.ClientId==inputClientId).ToList();
                 return orderist;
                
             }

@@ -33,19 +33,8 @@ namespace LoadProject.Controllers.AdminController
 
         public ActionResult viewAvailableQuotes()
         {
-            var listOfOrders = new List<Order>();
-            listOfOrders.Add(new Order()
-            {
-                Id = 1,
-                ClientId = 2,
-                TransportOwnerId = 3,
-                OrderPickup = "Lahore",
-                OrderDropOff = "Multan",
-                OrderComodity = "",
-                OrderWeight = "",
-            });
-            // AllOrderS From Order Table
-            ViewBag.QuotesData = listOfOrders;
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            ViewBag.QuotesData = dbContext.Orders.ToList();
             return View();
 
         }
