@@ -38,6 +38,7 @@
     <Property Name="TransportOwnerId" Type="int" Nullable="false" />
     <Property Name="QuoteBudget" Type="varchar" MaxLength="50" />
     <Property Name="QuoteStatus" Type="varchar" MaxLength="50" />
+    <Property Name="TransportOwnerName" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

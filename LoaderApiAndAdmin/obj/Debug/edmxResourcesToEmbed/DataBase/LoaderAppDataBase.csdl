@@ -33,7 +33,6 @@
     <FunctionImport Name="sp_upgraddiagrams" />
     <EntitySet Name="Images" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Image" />
     <EntitySet Name="Orders" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Order" />
-    <EntitySet Name="Quotes" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" />
     <EntitySet Name="sysdiagrams" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram" />
     <EntitySet Name="Users" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.User" />
     <EntitySet Name="Vehicles" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" />
@@ -45,6 +44,11 @@
       <End Role="Image" EntitySet="Images" />
       <End Role="Vehicle" EntitySet="Vehicles" />
     </AssociationSet>
+    <AssociationSet Name="FK_Vehicle_User" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Vehicle" EntitySet="Vehicles" />
+    </AssociationSet>
+    <EntitySet Name="Quotes" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" />
     <AssociationSet Name="FK_Quotes_Order" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order">
       <End Role="Order" EntitySet="Orders" />
       <End Role="Quote" EntitySet="Quotes" />
@@ -52,10 +56,6 @@
     <AssociationSet Name="FK_Quotes_User" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User">
       <End Role="User" EntitySet="Users" />
       <End Role="Quote" EntitySet="Quotes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Vehicle_User" Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User">
-      <End Role="User" EntitySet="Users" />
-      <End Role="Vehicle" EntitySet="Vehicles" />
     </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -101,18 +101,6 @@
     <Property Name="OrderBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Order" ToRole="Quote" />
   </EntityType>
-  <EntityType Name="Quote">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderId" Type="Int32" Nullable="false" />
-    <Property Name="TransportOwnerId" Type="Int32" Nullable="false" />
-    <Property Name="QuoteBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="QuoteStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Order" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Quote" ToRole="Order" />
-    <NavigationProperty Name="User" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="Quote" ToRole="User" />
-  </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -138,8 +126,8 @@
     <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="DevId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Image" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_User_Images" FromRole="User" ToRole="Image" />
-    <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="User" ToRole="Quote" />
     <NavigationProperty Name="Vehicles" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User" FromRole="User" ToRole="Vehicle" />
+    <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="User" ToRole="Quote" />
   </EntityType>
   <EntityType Name="Vehicle">
     <Key>
@@ -184,6 +172,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Vehicle_User">
+    <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.User" Role="User" Multiplicity="1" />
+    <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" Role="Vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vehicle">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Quote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="TransportOwnerId" Type="Int32" Nullable="false" />
+    <Property Name="QuoteBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="QuoteStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TransportOwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Order" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Quote" ToRole="Order" />
+    <NavigationProperty Name="User" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="Quote" ToRole="User" />
+  </EntityType>
   <Association Name="FK_Quotes_Order">
     <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Order" Role="Order" Multiplicity="1" />
     <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" Role="Quote" Multiplicity="*" />
@@ -205,18 +218,6 @@
       </Principal>
       <Dependent Role="Quote">
         <PropertyRef Name="TransportOwnerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Vehicle_User">
-    <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.User" Role="User" Multiplicity="1" />
-    <End Type="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" Role="Vehicle" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Vehicle">
-        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

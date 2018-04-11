@@ -166,8 +166,18 @@ namespace LoaderAppApi.Controllers
 
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 var orderist=  dbContext.Orders.Where(e=>e.ClientId==inputClientId).ToList();
-                return orderist;
-               
+
+                List<OrderDto> orderListDto = new List<OrderDto>();
+                foreach (var order in orderist)
+                {
+                    orderListDto.Add(Mapper.Map<Order, OrderDto>(order));
+                }
+
+                //                var orderListDto = Mapper.Map<Order, OrderDto>(orderist);
+
+                return orderListDto;
+
+
             }
             catch (Exception ex)
             {
@@ -306,6 +316,27 @@ namespace LoaderAppApi.Controllers
 
 
     // dto's
+
+    public class OrderDto
+    {
+        public int Id { get; set; }
+        public Nullable<int> ClientId { get; set; }
+        public Nullable<int> TransportOwnerId { get; set; }
+        public string OrderPickup { get; set; }
+        public string OrderDropOff { get; set; }
+        public string OrderComodity { get; set; }
+        public string OrderWeight { get; set; }
+        public Nullable<System.DateTime> OrderPickUpDate { get; set; }
+        public string OrderLength { get; set; }
+        public string OrderWidth { get; set; }
+        public string OrderHeight { get; set; }
+        public string OrderReceiverName { get; set; }
+        public string OrderReceiverCompanyName { get; set; }
+        public string OrderAdditionalDetails { get; set; }
+        public string OrderStatus { get; set; }
+        public string OrderBudget { get; set; }
+    }
+
     public class ViewOrderDetailsOfClientInput
     {
         public int ClientId { get; set; }

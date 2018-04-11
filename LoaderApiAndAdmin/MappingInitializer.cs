@@ -17,6 +17,10 @@ namespace LoaderApiAndAdmin
                 cfg.CreateMap<UserDto, User>();
                 cfg.CreateMap<User, UserDto>();
 
+//                OrderDto
+
+                cfg.CreateMap<OrderDto, Order>();
+                cfg.CreateMap< Order, OrderDto>();
 
 
                 //cfg.CreateMap<User, SignInInput>();
