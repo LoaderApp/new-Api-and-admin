@@ -60,29 +60,51 @@ namespace LoaderAppApi.Controllers
         [HttpPost]
         public dynamic SignIn(User input)
         {
-            LoaderAppEntites dbContext = new LoaderAppEntites();
-            var userEntity = dbContext.Users.FirstOrDefault(e => e.PhoneNo == input.PhoneNo && e.Password == input.Password);
-            if (userEntity == null)
+
+            try
+            {
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+                var userEntity = dbContext.Users.FirstOrDefault(e => e.PhoneNo == input.PhoneNo && e.Password == input.Password);
+                if (userEntity == null)
+                {
+                    return new
+                    {
+                        IsSignedIn = false,
+                        Message = "Check Phone no or password",
+                        UserData = "null",
+                        Error = "null"
+                    };
+
+                }
+                else
+                {
+
+                    return new
+                    {
+                        IsSignedIn = true,
+                        Message = "SignIn sucessfull",
+                        UserData = userEntity,
+                        Error = "null"
+                    };
+
+                }
+
+            }
+            catch (Exception ex)
             {
                 return new
                 {
                     IsSignedIn = false,
                     Message = "Check Phone no or password",
-                    UserData = "null"
-                };
-
-            }
-            else {
-
-                return new
-                {
-                    IsSignedIn = true,
-                    Message = "SignIn sucessfull",
-                    UserData = userEntity
+                    UserData = "null",
+                    Error = ex
 
                 };
 
+
             }
+
+
 
 
 
