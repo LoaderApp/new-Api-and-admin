@@ -77,6 +77,12 @@ namespace LoadProject.Controllers.AdminController
             //hamza
             var orderToUpdate = dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
             orderToUpdate.OrderStatus = "Waiting For Budget Approval";
+            orderToUpdate.TransportOwnerId = quote.TransportOwnerId;
+            var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
+            vehicle.VehicleIsBooked = true;
+            
+
+
 
             quote.QuoteStatus = "Waiting For Budget Approval";
             var order= dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
