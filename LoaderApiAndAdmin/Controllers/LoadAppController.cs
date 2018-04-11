@@ -236,10 +236,15 @@ namespace LoaderAppApi.Controllers
             try
             {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
-                return dbContext.Orders
+                 var ordersToBid = dbContext.Orders
                     .Where(e => e.OrderStatus=="Pending" || e.OrderStatus == "Rejected")
                     .ToList();
-
+                List<OrderDto> orderListToBidDto = new List<OrderDto>();
+                foreach (var order in ordersToBid)
+                {
+                    orderListToBidDto.Add(Mapper.Map<Order, OrderDto>(order));
+                }
+                return orderListToBidDto;
             }
             catch (Exception ex)
             {
