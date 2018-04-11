@@ -18,7 +18,7 @@ namespace LoaderAppApi.Controllers
             try {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
 
-                var checkIfAlreayExist = dbContext.Users.FirstOrDefault(e => e.PhoneNo != Input.PhoneNo);
+                var checkIfAlreayExist = dbContext.Users.FirstOrDefault(e => e.PhoneNo == Input.PhoneNo);
                 if (checkIfAlreayExist == null)
                 {
                     dbContext.Users.Add(Input);
