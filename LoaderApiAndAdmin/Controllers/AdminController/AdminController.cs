@@ -74,16 +74,21 @@ namespace LoadProject.Controllers.AdminController
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
             var quote= dbContext.Quotes.Where(e => e.Id == id).FirstOrDefault();
+            //hamza
+            var orderToUpdate = dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
+            orderToUpdate.OrderStatus = "Waiting For Budget Approval";
+
             quote.QuoteStatus = "Waiting For Budget Approval";
-            //quote.a
-             var order= dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
-             order.Quotes.ToList().Where(e => e.Id != id).ToList().ForEach(
+            var order= dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
+            order.Quotes.ToList().Where(e => e.Id != id).ToList().ForEach(
                 e =>
                 {
                     dbContext.Quotes.Remove(e);
                 }
                 );
             dbContext.SaveChanges();
+
+
             return View();
         }
 
