@@ -249,20 +249,38 @@ namespace LoaderAppApi.Controllers
             try
             {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
-                Quote quote = new Quote();
 
-                quote.OrderId = input.OrderId;
-                quote.QuoteStatus = "Pending";
-                quote.TransportOwnerId = input.TransportOwnerId;
-                quote.QuoteBudget = input.budget;
-                dbContext.Quotes.Add(quote);
-                dbContext.SaveChanges();
+                var isAlreadyQuoted = dbContext.Quotes.FirstOrDefault(e => e.OrderId == input.OrderId && e.TransportOwnerId == input.TransportOwnerId);
 
-                return new
+                if (isAlreadyQuoted == null)
                 {
-                    isQuoteAdded = true,
-                    exception = "null"
-                };
+                    Quote quote = new Quote();
+
+                    quote.OrderId = input.OrderId;
+                    quote.QuoteStatus = "Pending";
+                    quote.TransportOwnerId = input.TransportOwnerId;
+                    quote.QuoteBudget = input.budget;
+                    dbContext.Quotes.Add(quote);
+                    dbContext.SaveChanges();
+
+                    return new
+                    {
+                        isQuoteAdded = true,
+                        exception = "null",
+                        message = "Quote Posted Successfully"
+                    };
+
+                }
+                else {
+                    return new
+                    {
+                        isQuoteAdded = true,
+                        exception = "null",
+                        message = "Already Quoted This Order"
+
+                    };
+
+                }
 
             }
             catch (Exception ex)
@@ -270,7 +288,10 @@ namespace LoaderAppApi.Controllers
                 return new
                 {
                     isQuoteAdded = false,
-                    exception = ex
+                    exception = ex,
+                    message = "Server Error"
+
+
                 };
 
             }
