@@ -8,19 +8,21 @@
     <table style="width:100%">
         <tr>
             <th>Order Id</th>
-            <th>TransportOwner</th>
+            <th>TransportOwner Id</th>
+            <th>TransportOwner Name</th>
             <th>Budget</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
-        @foreach (var order in @ViewBag.QuotesDetail)
+        @foreach (var QuoteDetail in @ViewBag.QuotesDetail)
         {
             <tr>
-                <td>@order.OrderId</td>
-                <td>@order.TransportOwnerId</td>
-                <td>@order.QuoteBudget</td>
-                <td>@order.QuoteStatus</td>
-                <td><a href=@Url.Action("AcceptQuote", "Admin",new { id=order.Id})>Accept</a></td>
+                <td>@QuoteDetail.OrderId</td>
+                <td>@QuoteDetail.TransportOwnerId</td>
+                <td>@QuoteDetail.TransportOwnerName</td>
+                <td>@QuoteDetail.QuoteBudget</td>
+                <td>@QuoteDetail.QuoteStatus</td>
+                <td><a href=@Url.Action("AcceptQuote", "Admin",new { id= QuoteDetail.Id})>Accept</a></td>
             </tr>
         }
        
