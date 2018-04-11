@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoaderApiAndAdmin.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,13 +14,15 @@ namespace LoadProject.Controllers.AdminController
         {
             return View();
         }
-
-
+        [HttpGet]
         public ActionResult viewAvailableOrders()
         {
             // AllOrderS From Order Table
+            LoaderAppEntites dbContext = new LoaderAppEntites();
 
-            return View();
+            var users = dbContext.Users.ToList();
+
+            return View(users);
         }
 
         public ActionResult viewAvailableQuotes()

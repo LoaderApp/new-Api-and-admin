@@ -260,9 +260,9 @@
     <Content Include="Views\Admin\changeStatusToCompleted.cshtml" />
     <Content Include="Views\Admin\changeStatusToTransit.cshtml" />
     <Content Include="Views\Admin\updateOrderAsConfirmedToTransportOwner.cshtml" />
-    <Content Include="Views\Admin\viewAvailableOrders.cshtml" />
     <Content Include="Views\Admin\viewAvailableQuotes.cshtml" />
     <Content Include="Views\Admin\viewQuoteDetails.cshtml" />
+    <Content Include="Views\Admin\viewAvailableOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

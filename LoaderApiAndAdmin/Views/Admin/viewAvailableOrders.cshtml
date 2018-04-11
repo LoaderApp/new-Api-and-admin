@@ -1,148 +1,90 @@
-﻿
+﻿@model LoaderApiAndAdmin.DataBase.User
+
 @{
-    ViewBag.Title = "AvailableOrders";
+    ViewBag.Title = "viewAvailableOrders";
 }
 
+<h2>viewAvailableOrders</h2>
 
-<body>
-    <h2>Available Orders</h2>
-    <table style="width:100%">
-        <tr>
-            <th>Pick Up</th>
-            <th>Drop Off</th>
-            <th>Comodity</th>
-            <th>Weight</th>
-            <th>PickUpDate</th>
-            <th>Length</th>
-            <th>Width</th>
-            <th>Height</th>
-            <th>ReceiverName</th>
-            <th>ReceiverCompanyName</th>
-            <th>AdditionalDetails</th>
-            <th>Status</th>
-            <th>Budget</th>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>ghi</td>
-        </tr>
-    </table>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
 
-</body>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DevId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DevId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image.ImageData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image.ImageData)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
