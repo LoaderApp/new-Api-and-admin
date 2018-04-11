@@ -25,7 +25,7 @@ namespace LoaderAppApi.Controllers
                 {
                     IsUserUpdated = true,
                     ErrorException = "null",
-                    UserId = userId
+                    UserId = userId.Id
 
                 };
             }
