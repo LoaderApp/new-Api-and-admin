@@ -274,7 +274,7 @@ namespace LoaderAppApi.Controllers
                 else {
                     return new
                     {
-                        isQuoteAdded = true,
+                        isQuoteAdded = false,
                         exception = "null",
                         message = "Already Quoted This Order"
 
