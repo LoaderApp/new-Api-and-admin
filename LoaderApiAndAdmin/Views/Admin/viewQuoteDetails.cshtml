@@ -13,42 +13,18 @@
             <th>Status</th>
             <th>Action</th>
         </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>pending</td>
-            <td><a href=@Url.Action("AcceptQuote","Admin")>Accept</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>pending</td>
-            <td><a href=@Url.Action("AcceptQuote","Admin")>Accept</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>pending</td>
-            <td><a href=@Url.Action("AcceptQuote","Admin")>Accept</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>pending</td>
-            <td><a href=@Url.Action("AcceptQuote","Admin")>Accept</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>pending</td>
-            <td><a href=@Url.Action("AcceptQuote","Admin")>Accept</a></td>
-        </tr>
-
+        @foreach (var order in @ViewBag.QuotesDetail)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.TransportOwnerId</td>
+                <td>@order.QuoteBudget</td>
+                <td>@order.QuoteStatus</td>
+                <td><a href=@Url.Action("AcceptQuote", "Admin",new { id=order.Id})>Accept</a></td>
+            </tr>
+        }
+       
+    
     </table>
 
 
