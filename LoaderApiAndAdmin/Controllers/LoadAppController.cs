@@ -58,7 +58,7 @@ namespace LoaderAppApi.Controllers
         }
 
         [HttpPost]
-        public dynamic SignIn(SignInInput input)
+        public dynamic SignIn(User input)
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
             var userEntity = dbContext.Users.FirstOrDefault(e => e.PhoneNo == input.PhoneNo && e.Password == input.Password);
