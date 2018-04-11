@@ -18,10 +18,15 @@ namespace LoaderAppApi.Controllers
             try {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 dbContext.Users.Add(Input);
+
+                var userId = dbContext.Users.FirstOrDefault(e => e.PhoneNo == Input.PhoneNo);
                 dbContext.SaveChanges();
                 return new
                 {
                     IsUserUpdated = true,
+                    ErrorException = "null",
+                    UserId = userId
+
                 };
             }
             catch (Exception ex)
@@ -29,7 +34,8 @@ namespace LoaderAppApi.Controllers
                 return new
                 {
                     IsUserUpdated = false,
-                    ErrorException = ex
+                    ErrorException = ex,
+                    UserId = "-1"
                 };
             }
         }

@@ -17,12 +17,11 @@ namespace LoadProject.Controllers.AdminController
         [HttpGet]
         public ActionResult viewAvailableOrders()
         {
+
+
             // AllOrderS From Order Table
-            LoaderAppEntites dbContext = new LoaderAppEntites();
 
-            var users = dbContext.Users.ToList();
-
-            return View(users);
+            return View();
         }
 
         public ActionResult viewAvailableQuotes()
