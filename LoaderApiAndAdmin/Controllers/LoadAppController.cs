@@ -260,6 +260,7 @@ namespace LoaderAppApi.Controllers
                     quote.QuoteStatus = "Pending";
                     quote.TransportOwnerId = input.TransportOwnerId;
                     quote.QuoteBudget = input.budget;
+                    quote.TransportOwnerName = input.TransportOwnerName;
                     dbContext.Quotes.Add(quote);
                     dbContext.SaveChanges();
 
@@ -317,6 +318,8 @@ namespace LoaderAppApi.Controllers
         public int OrderId { get; set; }
 
         public string budget { get; set; }
+
+        public string TransportOwnerName { get; set; }
     }
 
     public class SignInInput

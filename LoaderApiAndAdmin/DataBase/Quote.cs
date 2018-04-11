@@ -19,6 +19,7 @@ namespace LoaderApiAndAdmin.DataBase
         public int TransportOwnerId { get; set; }
         public string QuoteBudget { get; set; }
         public string QuoteStatus { get; set; }
+        public string TransportOwnerName { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual User User { get; set; }
