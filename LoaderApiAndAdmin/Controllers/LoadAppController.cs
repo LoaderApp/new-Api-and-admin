@@ -17,17 +17,34 @@ namespace LoaderAppApi.Controllers
         {
             try {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
-                dbContext.Users.Add(Input);
-                dbContext.SaveChanges();
 
-                var userId = dbContext.Users.FirstOrDefault(e => e.PhoneNo == Input.PhoneNo);
-                return new
+                var checkIfAlreayExist = dbContext.Users.FirstOrDefault(e => e.PhoneNo != Input.PhoneNo);
+                if (checkIfAlreayExist == null)
                 {
-                    IsUserUpdated = true,
-                    ErrorException = "null",
-                    UserId = userId.Id
+                    dbContext.Users.Add(Input);
+                    dbContext.SaveChanges();
 
-                };
+                    var userId = dbContext.Users.FirstOrDefault(e => e.PhoneNo == Input.PhoneNo);
+                    return new
+                    {
+                        IsUserUpdated = true,
+                        ErrorException = "null",
+                        UserId = userId.Id
+
+                    };
+
+
+                }
+                else
+                {
+                    return new
+                    {
+                        IsUserUpdated = false,
+                        ErrorException = "Phone No Already Exists",
+                        UserId = "-1"
+                    };
+
+                }
             }
             catch (Exception ex)
             {
