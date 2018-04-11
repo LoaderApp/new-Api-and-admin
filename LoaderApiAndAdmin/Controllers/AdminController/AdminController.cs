@@ -9,18 +9,43 @@ namespace LoadProject.Controllers.AdminController
 {
     public class AdminController : Controller
     {
+
+        public ActionResult SignIn()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult SignInMethod(SignInInput input)
+        {
+            if (input.UserName == "Admin" && input.Password == "Admin")
+            {
+                Session["SignIn"] = new { SignIn = "True" };
+                return RedirectToAction("AdminMain");
+            }
+            return View("SignIn");
+
+        }
+        //SignInInput input
         // GET: AdminMain
         public ActionResult AdminMain()
         {
             //Session["SignIn"] = false;
-            //if (Session["SignIn"] != null)
-            //{
-            //    return View();
-            //}
-            //return RedirectToAction("viewAvailableOrders");
-            return View();
+            if (Session["SignIn"] != null)
+            {
+                return View();
+            }
+            return RedirectToAction("SignIn");
+
+            //return View();
         }
 
+        public ActionResult SignOut()
+        {
+            Session["SignIn"] = null;
+            return RedirectToAction("AdminMain");
+        }
 
         public ActionResult viewAvailableOrders()
         {
@@ -82,5 +107,13 @@ namespace LoadProject.Controllers.AdminController
 
 
 
+    }
+
+    public class SignInInput
+    {
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+        
     }
 }
