@@ -241,6 +241,45 @@ namespace LoaderAppApi.Controllers
             }
         }
 
+        [HttpPost]
+        public dynamic PostBidToAnOrder(PostBidToAnOrderInput input)
+        {
+
+
+            try
+            {
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+                Quote quote = new Quote();
+
+                quote.OrderId = input.OrderId;
+                quote.QuoteStatus = "Pending";
+                quote.TransportOwnerId = input.TransportOwnerId;
+                quote.QuoteBudget = input.budget;
+                dbContext.Quotes.Add(quote);
+                dbContext.SaveChanges();
+
+                return new
+                {
+                    isQuoteAdded = true,
+                    exception = "null"
+                };
+
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    isQuoteAdded = false,
+                    exception = ex
+                };
+
+            }
+
+
+
+
+        }
+
     }
 
 
@@ -249,6 +288,14 @@ namespace LoaderAppApi.Controllers
     {
         public int ClientId { get; set; }
 
+    }
+
+    public class PostBidToAnOrderInput
+    {
+        public int TransportOwnerId { get; set; }
+        public int OrderId { get; set; }
+
+        public string budget { get; set; }
     }
 
     public class SignInInput
