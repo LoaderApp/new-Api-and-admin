@@ -14,12 +14,13 @@ namespace LoaderApiAndAdmin
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<User, User>();
+                cfg.CreateMap<UserDto, User>();
+                cfg.CreateMap<User, UserDto>();
 
 
 
-                cfg.CreateMap<User, SignInInput>();
-                cfg.CreateMap<SignInInput, User>();
+                //cfg.CreateMap<User, SignInInput>();
+                //cfg.CreateMap<SignInInput, User>();
 
                 //cfg.CreateMap<Item, ItemDto>();
                 //cfg.CreateMap<ItemDto, Item>();

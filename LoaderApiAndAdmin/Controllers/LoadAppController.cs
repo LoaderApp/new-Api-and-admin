@@ -1,4 +1,5 @@
-﻿using LoaderApiAndAdmin.DataBase;
+﻿using AutoMapper;
+using LoaderApiAndAdmin.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,7 +66,10 @@ namespace LoaderAppApi.Controllers
             {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 var userEntity = dbContext.Users.FirstOrDefault(e => e.PhoneNo == input.PhoneNo && e.Password == input.Password);
-                if (userEntity == null)
+
+               var userDto= Mapper.Map<User, UserDto>(userEntity);
+
+                if (userDto == null)
                 {
                     return new
                     {
@@ -83,7 +87,7 @@ namespace LoaderAppApi.Controllers
                     {
                         IsSignedIn = true,
                         Message = "SignIn sucessfull",
-                        UserData = userEntity,
+                        UserData = userDto,
                         Error = "null"
                     };
 
@@ -264,6 +268,20 @@ namespace LoaderAppApi.Controllers
     public class ViewOrderDetailsOfTransportOwnerIput
     {
         public int TransportOwnerId { get; set; }
+    }
+
+    public class UserDto
+    {
+        public int Id { get; set; }
+        public Nullable<int> ImgId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string CompanyName { get; set; }
+        public string PhoneNo { get; set; }
+        public string Role { get; set; }
+        public string DevId { get; set; }
     }
 }
 
