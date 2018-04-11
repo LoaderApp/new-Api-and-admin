@@ -18,9 +18,9 @@ namespace LoaderAppApi.Controllers
             try {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 dbContext.Users.Add(Input);
+                dbContext.SaveChanges();
 
                 var userId = dbContext.Users.FirstOrDefault(e => e.PhoneNo == Input.PhoneNo);
-                dbContext.SaveChanges();
                 return new
                 {
                     IsUserUpdated = true,
