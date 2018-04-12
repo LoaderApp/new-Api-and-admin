@@ -9,39 +9,23 @@
     <table style="width:100%">
         <tr>
             <th>Order Id</th>
-            <th>TransportOwner</th>
+            <th>TransportOwner Id</th>
+            <th>TransportOwner Name</th>
             <th>Budget</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>completed</td>
-            <td><a href=@Url.Action("","Admin")>confirm completed</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>transit</td>
-            <td><a href=@Url.Action("","Admin")>confirm completed</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>completed</td>
-            <td><a href=@Url.Action("","Admin")>confirm completed</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>completed</td>
-            <td><a href=@Url.Action("","Admin")>confirm completed</a></td>
-        </tr>
+        @foreach (var completed in @ViewBag.CompletedOrders)
+        {
+            <tr>
+                <td>@completed.OrderId</td>
+                <td>@completed.TransportOwnerId</td>
+                <td>@completed.TransportOwnerName</td>
+                <td>@completed.QuoteBudget</td>
+                <td>@completed.QuoteStatus</td>
+                <td><a href=@Url.Action("ConfirmCompleted", "Admin",new { id= completed.Id})>Confirm Completed</a></td>
+            </tr>
+        }
 
     </table>
 </body>

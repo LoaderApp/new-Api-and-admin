@@ -165,10 +165,21 @@ namespace LoadProject.Controllers.AdminController
 
         public ActionResult changeStatusToCompleted()
         {
-
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            ViewBag.CompletedOrders = dbContext.Quotes.Where(e => e.QuoteStatus == "Completed").ToList();
             return View();
         }
 
+        public ActionResult ConfirmCompleted(int Id)
+        {
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+
+            var order = dbContext.Orders.Where(e => e.Id == Id).SingleOrDefault();
+            order.OrderStatus = "Completed";
+            dbContext.SaveChanges();
+
+            return RedirectToAction("changeStatusToCompleted");
+        }
 
 
     }
