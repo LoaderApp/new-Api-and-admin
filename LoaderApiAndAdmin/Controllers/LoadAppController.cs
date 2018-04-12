@@ -309,6 +309,37 @@ namespace LoaderAppApi.Controllers
             }
         }
         // request parameter an array so that it could be accessed by volley in android as response is a json array
+        public dynamic ViewOrderUpdatesOfTransportOwner(ViewOrderDetailsOfTransportOwnerIput[] Input)
+        {
+            try
+            {
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+
+                var inputToId = Input[0].TransportOwnerId;
+                var orderist = dbContext.Orders.Where(e => e.ClientId == inputToId && (e.OrderStatus == "Confirmed" || e.OrderStatus == "In Transit" || e.OrderStatus == "Completed")).ToList();
+
+                List<OrderDto> orderListDto = new List<OrderDto>();
+                foreach (var order in orderist)
+                {
+                    orderListDto.Add(Mapper.Map<Order, OrderDto>(order));
+                }
+
+                //                var orderListDto = Mapper.Map<Order, OrderDto>(orderist);
+
+                return orderListDto;
+
+
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    IsOrderUpdated = false,
+                    ErrorException = ex
+                };
+            }
+        }
+
         [HttpPost]
         public dynamic ViewAvailableOrdersToBid(AcceptOrDeclineOfferInput [] Input)
         {
