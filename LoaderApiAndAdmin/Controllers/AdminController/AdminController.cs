@@ -61,7 +61,10 @@ namespace LoadProject.Controllers.AdminController
         public ActionResult viewAvailableQuotes()
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
-            ViewBag.QuotesData = dbContext.Orders.Where(e => e.OrderStatus == "Pending" || e.OrderStatus == "Rejected").ToList();
+            var check1 = "Pending";
+            var check2 = "Rejected";
+        
+            ViewBag.QuotesData = dbContext.Orders.Where(e => e.OrderStatus == check1 || e.OrderStatus == check2).ToList();
             return View();
 
         }
@@ -122,7 +125,8 @@ namespace LoadProject.Controllers.AdminController
         public ActionResult updateOrderAsConfirmedToTransportOwner()
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
-            ViewBag.AcceptedOrders = dbContext.Orders.Where(e => e.OrderStatus == "Accepted" ).ToList();
+            var check = "Accepted";
+            ViewBag.AcceptedOrders = dbContext.Orders.Where(e => e.OrderStatus == check ).ToList();
             return View();
 
         }
@@ -166,7 +170,8 @@ namespace LoadProject.Controllers.AdminController
         public ActionResult changeStatusToCompleted()
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
-            ViewBag.CompletedOrders = dbContext.Quotes.Where(e => e.QuoteStatus == "Completed").ToList();
+            var check = "Completed";
+            ViewBag.CompletedOrders = dbContext.Quotes.Where(e => e.QuoteStatus == check).ToList();
             return View();
         }
 
@@ -175,7 +180,9 @@ namespace LoadProject.Controllers.AdminController
             LoaderAppEntites dbContext = new LoaderAppEntites();
 
             var order = dbContext.Orders.Where(e => e.Id == Id).SingleOrDefault();
+            var quote = dbContext.Quotes.Where(e => e.OrderId == Id).SingleOrDefault();
             order.OrderStatus = "Completed";
+            quote.QuoteStatus = "Job Completed";
             dbContext.SaveChanges();
 
             return RedirectToAction("changeStatusToCompleted");
