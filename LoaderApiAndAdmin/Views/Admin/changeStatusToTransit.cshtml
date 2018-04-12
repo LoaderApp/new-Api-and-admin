@@ -8,47 +8,23 @@
     <table style="width:100%">
         <tr>
             <th>Order Id</th>
-            <th>TransportOwner</th>
+            <th>TransportOwner Id</th>
+            <th>TransportOwner Name</th>
             <th>Budget</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>transit</td>
-            <td><a href=@Url.Action("","Admin")>confirm Transit</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>transit</td>
-            <td><a href=@Url.Action("","Admin")>confirm transit</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>transit</td>
-            <td><a href=@Url.Action("","Admin")>confirm transit</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>transit</td>
-            <td><a href=@Url.Action("","Admin")>confirm transit</a></td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Joseph</td>
-            <td>2400</td>
-            <td>transit</td>
-            <td><a href=@Url.Action("","Admin")>confirm transit</a></td>
-        </tr>
-
+        @foreach (var trnasited in @ViewBag.TransitOrders)
+        {
+            <tr>
+                <td>@trnasited.OrderId</td>
+                <td>@trnasited.TransportOwnerId</td>
+                <td>@trnasited.TransportOwnerName</td>
+                <td>@trnasited.QuoteBudget</td>
+                <td>@trnasited.QuoteStatus</td>
+                <td><a href=@Url.Action("ConfirmTransit", "Admin",new { id= trnasited.Id})>Accept</a></td>
+            </tr>
+        }
     </table>
 </body>
 

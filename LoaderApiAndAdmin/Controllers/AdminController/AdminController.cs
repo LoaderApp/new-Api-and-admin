@@ -145,8 +145,22 @@ namespace LoadProject.Controllers.AdminController
 
         public ActionResult changeStatusToTransit()
         {
-
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            ViewBag.TransitOrders = dbContext.Quotes.Where(e => e.QuoteStatus == "In Transit").ToList();
             return View();
+
+
+        }
+
+        public ActionResult ConfirmTransit(int Id)
+        {
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+
+            var order = dbContext.Orders.Where(e => e.Id == Id).SingleOrDefault();
+            order.OrderStatus = "In Transit";
+            dbContext.SaveChanges();
+
+            return RedirectToAction("changeStatusToTransit");
         }
 
         public ActionResult changeStatusToCompleted()
