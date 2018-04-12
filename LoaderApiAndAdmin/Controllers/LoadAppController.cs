@@ -285,7 +285,7 @@ namespace LoaderAppApi.Controllers
                 LoaderAppEntites dbContext = new LoaderAppEntites();
 
                 var inputToId = Input[0].TransportOwnerId;
-                var orderist = dbContext.Orders.Where(e => e.ClientId == inputToId).ToList();
+                var orderist = dbContext.Orders.Where(e => e.TransportOwnerId == inputToId).ToList();
 
                 List<OrderDto> orderListDto = new List<OrderDto>();
                 foreach (var order in orderist)
@@ -336,6 +336,31 @@ namespace LoaderAppApi.Controllers
                 {
                     IsOrderUpdated = false,
                     ErrorException = ex
+                };
+            }
+        }
+
+
+        [HttpPost]
+        public dynamic changeOrderStatusToInTransit(AcceptOrDeclineOfferInput input)
+        {
+            try
+            {
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+                var quote = dbContext.Quotes.Where(e => e.OrderId == input.OrderId).Single();
+                quote.QuoteStatus = input.Status;
+                dbContext.SaveChanges();
+                return new
+                {
+                    Message ="Order Status changed Admin will review the changes" 
+                };
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    Message = "Exception occured due to some reason"
+
                 };
             }
         }
@@ -431,7 +456,6 @@ namespace LoaderAppApi.Controllers
 
 
     // dto's
-
     public class OrderDto
     {
         public int Id { get; set; }
