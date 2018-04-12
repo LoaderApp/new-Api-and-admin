@@ -156,7 +156,7 @@ namespace LoadProject.Controllers.AdminController
         {
             LoaderAppEntites dbContext = new LoaderAppEntites();
 
-            var order = dbContext.Orders.Where(e => e.Id == Id).SingleOrDefault();
+            var order = dbContext.Orders.Where(e => e.Id == Id).FirstOrDefault();
             order.OrderStatus = "In Transit";
             dbContext.SaveChanges();
 

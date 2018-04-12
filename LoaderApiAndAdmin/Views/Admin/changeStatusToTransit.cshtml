@@ -22,7 +22,7 @@
                 <td>@trnasited.TransportOwnerName</td>
                 <td>@trnasited.QuoteBudget</td>
                 <td>@trnasited.QuoteStatus</td>
-                <td><a href=@Url.Action("ConfirmTransit", "Admin",new { id= trnasited.Id})>Accept</a></td>
+                <td><a href=@Url.Action("ConfirmTransit", "Admin",new { id= trnasited.OrderId })>Accept</a></td>
             </tr>
         }
     </table>
