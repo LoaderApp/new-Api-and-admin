@@ -359,8 +359,7 @@ namespace LoaderAppApi.Controllers
             {
                 return new
                 {
-                    Message = "Exception occured due to some reason",
-                    Exception = ex
+                    Message = "Exception occured due to some reason"
                 };
             }
         }
