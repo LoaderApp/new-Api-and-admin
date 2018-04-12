@@ -347,7 +347,7 @@ namespace LoaderAppApi.Controllers
             try
             {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
-                var quote = dbContext.Quotes.Where(e => e.OrderId == input.OrderId).Single();
+                var quote = dbContext.Quotes.Where(e => e.OrderId == input.OrderId).FirstOrDefault();
                 quote.QuoteStatus = input.Status;
                 dbContext.SaveChanges();
                 return new
@@ -355,12 +355,12 @@ namespace LoaderAppApi.Controllers
                     Message ="Order Status changed Admin will review the changes" 
                 };
             }
-            catch (Exception )
+            catch (Exception ex)
             {
                 return new
                 {
-                    Message = "Exception occured due to some reason"
-
+                    Message = "Exception occured due to some reason",
+                    Exception = ex
                 };
             }
         }
