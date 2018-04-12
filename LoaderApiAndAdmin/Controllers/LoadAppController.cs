@@ -342,7 +342,7 @@ namespace LoaderAppApi.Controllers
 
 
         [HttpPost]
-        public dynamic changeOrderStatusToInTransit(AcceptOrDeclineOfferInput input)
+        public dynamic changeOrderStatus(AcceptOrDeclineOfferInput input)
         {
             try
             {
@@ -355,7 +355,7 @@ namespace LoaderAppApi.Controllers
                     Message ="Order Status changed Admin will review the changes" 
                 };
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return new
                 {
