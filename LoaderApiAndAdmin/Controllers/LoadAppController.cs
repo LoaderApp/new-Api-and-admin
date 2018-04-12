@@ -278,13 +278,26 @@ namespace LoaderAppApi.Controllers
             }
         }
         [HttpPost]
-        public dynamic ViewOrderDetailsOfTransportOwner(ViewOrderDetailsOfTransportOwnerIput Input)
+        public dynamic ViewOrderDetailsOfTransportOwner(ViewOrderDetailsOfTransportOwnerIput [] Input)
         {
             try
             {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
-                return dbContext.Orders.Where(e => e.TransportOwnerId == Input.TransportOwnerId).ToList();
-               
+
+                var inputToId = Input[0].TransportOwnerId;
+                var orderist = dbContext.Orders.Where(e => e.ClientId == inputToId).ToList();
+
+                List<OrderDto> orderListDto = new List<OrderDto>();
+                foreach (var order in orderist)
+                {
+                    orderListDto.Add(Mapper.Map<Order, OrderDto>(order));
+                }
+
+                //                var orderListDto = Mapper.Map<Order, OrderDto>(orderist);
+
+                return orderListDto;
+
+
             }
             catch (Exception ex)
             {
