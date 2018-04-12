@@ -23,54 +23,30 @@
             <th>Budget</th>
             <th>Send Confirmation</th>
         </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>accepted</td>
-            <td>ghi</td>
-            <td><a href=@Url.Action("","Admin")>Send confirmation</a></td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>accepted</td>
-            <td>ghi</td>
-            <td><a href=@Url.Action("","Admin")>Send confirmation</a></td>
-        </tr>
-        <tr>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>ghi</td>
-            <td>abc</td>
-            <td>def</td>
-            <td>accepted</td>
-            <td>ghi</td>
-            <td><a href=@Url.Action("","Admin")>Send confirmation</a></td>
-        </tr>
+
+
+        @{
+            foreach (var order in @ViewBag.AcceptedOrders)
+            {
+                <tr>
+                    <td>@order.OrderPickup</td>
+                    <td>@order.OrderDropOff</td>
+                    <td>@order.OrderComodity</td>
+                    <td>@order.OrderWeight</td>
+                    <td>@order.OrderPickUpDate</td>
+                    <td>@order.OrderLength</td>
+                    <td>@order.OrderWidth</td>
+                    <td>@order.OrderHeight</td>
+                    <td>@order.OrderReceiverName</td>
+                    <td>@order.OrderReceiverCompanyName</td>
+                    <td>@order.OrderAdditionalDetails</td>
+                    <td>@order.OrderStatus</td>
+                    <td>@order.OrderBudget</td>
+                    <td><a href=@Url.Action("sendOrderConfirmationtoTO", "Admin",new { id= order.Id})>Send Confirmation</a></td>
+                </tr>
+            }
+        }
+
     </table>
 
 </body>

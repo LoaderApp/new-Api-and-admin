@@ -74,31 +74,6 @@ namespace LoadProject.Controllers.AdminController
         public ActionResult AcceptQuote(int id =0)
         {
 
-
-            //LoaderAppEntites dbContext = new LoaderAppEntites();
-            //var quote= dbContext.Quotes.Where(e => e.Id == id).FirstOrDefault();
-            ////hamza
-            //var orderToUpdate = dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
-            //orderToUpdate.OrderStatus = "Waiting For Budget Approval";
-            //orderToUpdate.TransportOwnerId = quote.TransportOwnerId;
-            //var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
-            //vehicle.VehicleIsBooked = true;
-
-
-            ////hamza
-
-
-
-            //quote.QuoteStatus = "Waiting For Budget Approval";
-            //var order= dbContext.Orders.Where(e => e.Id == quote.OrderId).FirstOrDefault();
-            //order.Quotes.ToList().Where(e => e.Id != id).ToList().ForEach(
-            //    e =>
-            //    {
-            //        dbContext.Quotes.Remove(e);
-            //    }
-            //    );
-            //dbContext.SaveChanges();
-
             LoaderAppEntites dbContext = new LoaderAppEntites();
             var quote= dbContext.Quotes.Where(e => e.Id == id).FirstOrDefault();
 
@@ -146,9 +121,27 @@ namespace LoadProject.Controllers.AdminController
 
         public ActionResult updateOrderAsConfirmedToTransportOwner()
         {
-
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            ViewBag.AcceptedOrders = dbContext.Orders.Where(e => e.OrderStatus == "Accepted" ).ToList();
             return View();
+
         }
+
+        public ActionResult sendOrderConfirmationtoTO(int id)
+        {
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            var quotes = dbContext.Quotes.Where(e => e.OrderId == id).FirstOrDefault();
+            var order = dbContext.Orders.Where(e => e.Id == id).FirstOrDefault();
+            order.OrderStatus = "Confirmed";
+            quotes.QuoteStatus = "Confirmed";
+            dbContext.SaveChanges();
+
+            return RedirectToAction("updateOrderAsConfirmedToTransportOwner");
+
+        }
+
+        
+
 
         public ActionResult changeStatusToTransit()
         {
