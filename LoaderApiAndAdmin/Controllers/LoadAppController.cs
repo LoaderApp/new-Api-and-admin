@@ -220,6 +220,39 @@ namespace LoaderAppApi.Controllers
                 };
             }
         }
+
+        [HttpPost]
+        public dynamic ViewOrderStatusOfClient(ViewOrderDetailsOfClientInput[] Input)
+        {
+            try
+            {
+                var inputClientId = Input[0].ClientId;
+
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+                var orderist = dbContext.Orders.Where(e => e.ClientId == inputClientId && (e.OrderStatus == "Accepted" || e.OrderStatus == "Confirmed" || e.OrderStatus == "In Transit" || e.OrderStatus == "Completed") ).ToList();
+
+                List<OrderDto> orderListDto = new List<OrderDto>();
+                foreach (var order in orderist)
+                {
+                    orderListDto.Add(Mapper.Map<Order, OrderDto>(order));
+                }
+
+                //                var orderListDto = Mapper.Map<Order, OrderDto>(orderist);
+
+                return orderListDto;
+
+
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    IsOrderUpdated = false,
+                    ErrorException = ex
+                };
+            }
+        }
+
         [HttpPost]
         public dynamic AcceptOrDeclineOffer(AcceptOrDeclineOfferInput Input)
         {
