@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "showClients";
+}
+
+<h2>List of Clients</h2>
+
+<body>
+
+    <table style="width:100%">
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Contact No</th>
+            <th>Company Name</th>
+        </tr>
+        @foreach (var clients in @ViewBag.ClientsData)
+        {
+            <tr>
+                <td>@clients.FirstName</td>
+                <td>@clients.LastName</td>
+                <td>@clients.Email</td>
+                <td>@clients.PhoneNo</td>
+                <td>@clients.CompanyName</td>
+            </tr>
+        }
+
+
+    </table>
+
+</body>

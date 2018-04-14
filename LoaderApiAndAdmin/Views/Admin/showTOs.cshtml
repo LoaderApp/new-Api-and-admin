@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "showTOs";
+}
+
+<h2>List of Transport Owners</h2>
+
+<body>
+
+    <table style="width:100%">
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Contact No</th>
+            <th>Company Name</th>
+        </tr>
+        @foreach (var Tos in @ViewBag.TosData)
+        {
+            <tr>
+                <td>@Tos.FirstName</td>
+                <td>@Tos.LastName</td>
+                <td>@Tos.Email</td>
+                <td>@Tos.PhoneNo</td>
+                <td>@Tos.CompanyName</td>
+            </tr>
+        }
+
+
+    </table>
+
+</body>

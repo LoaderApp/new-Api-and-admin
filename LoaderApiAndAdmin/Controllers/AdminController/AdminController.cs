@@ -188,6 +188,28 @@ namespace LoadProject.Controllers.AdminController
             return RedirectToAction("changeStatusToCompleted");
         }
 
+        public ActionResult showClients()
+        {
+
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            var check1 = "Customer";
+
+            ViewBag.ClientsData = dbContext.Users.Where(e => e.Role == check1 ).ToList();
+            return View();
+
+
+        }
+
+
+        public ActionResult showTOs()
+        {
+            LoaderAppEntites dbContext = new LoaderAppEntites();
+            var check1 = "TransportOwner";
+
+            ViewBag.TosData = dbContext.Users.Where(e => e.Role == check1).ToList();
+            return View();
+        }
+
 
     }
 
