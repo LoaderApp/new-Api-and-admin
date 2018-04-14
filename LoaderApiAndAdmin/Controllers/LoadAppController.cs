@@ -285,7 +285,7 @@ namespace LoaderAppApi.Controllers
                 LoaderAppEntites dbContext = new LoaderAppEntites();
 
                 var inputToId = Input[0].TransportOwnerId;
-                var orderist = dbContext.Orders.Where(e => e.TransportOwnerId == inputToId).ToList();
+                var orderist = dbContext.Orders.Where(e => e.TransportOwnerId == inputToId && e.OrderStatus !="Completed").ToList();
 
                 List<OrderDto> orderListDto = new List<OrderDto>();
                 foreach (var order in orderist)
