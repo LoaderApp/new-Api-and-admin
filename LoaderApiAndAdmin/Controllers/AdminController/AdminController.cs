@@ -57,7 +57,7 @@ namespace LoadProject.Controllers.AdminController
                 var listOfOrders = new List<Order>();
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 // AllOrderS From Order Table
-                ViewBag.OrderData = dbContext.Orders.ToList();
+                ViewBag.OrderData = dbContext.Orders.Where(e => e.OrderStatus !="x").ToList();
                 return View();
             }
             return RedirectToAction("SignIn");
@@ -74,7 +74,7 @@ namespace LoadProject.Controllers.AdminController
                 var check1 = "Pending";
                 var check2 = "Rejected";
 
-                ViewBag.QuotesData = dbContext.Orders.Where(e => e.OrderStatus == check1 || e.OrderStatus == check2).ToList();
+                ViewBag.QuotesData = dbContext.Orders.Where(e => (e.OrderStatus == check1 || e.OrderStatus == check2) ).ToList();
                 return View();
             }
             return RedirectToAction("SignIn");
