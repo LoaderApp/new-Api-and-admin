@@ -325,7 +325,6 @@ namespace LoaderAppApi.Controllers
                     orderListDto.Add(Mapper.Map<Order, OrderDto>(order));
                 }
 
-                //                var orderListDto = Mapper.Map<Order, OrderDto>(orderist);
 
                 return orderListDto;
 

@@ -3,7 +3,7 @@
     ViewBag.Title = "Admin";
 }
 
-<body>
+<body style="background-color:cadetblue;">
 
     <div class="row" style="text-align:center;">
         <h1>Welcome to Admin panel</h1>
@@ -15,33 +15,33 @@
         <div class="col-lg-4">
 
             <div class="row">
-                <button type="button" onclick="location.href='@Url.Action("viewAvailableOrders", "Admin")'">View Available Orders</button>
+                <button type="button" style="width:100%;" class="btn-default" onclick="location.href='@Url.Action("viewAvailableOrders", "Admin")'">View Available Orders</button>
 
             </div>
             <div class="row" style="margin-top:30px;">
-                <button type="button" onclick="location.href='@Url.Action("viewAvailableQuotes", "Admin")'">View Available Quotes</button>
-
-            </div>
-
-            <div class="row" style="margin-top:30px;">
-                <button type="button" onclick="location.href='@Url.Action("updateOrderAsConfirmedToTransportOwner", "Admin")'">update order as Confirmed to Transport Owner</button>
+                <button type="button" style="width:100%;" class="btn-default" onclick="location.href='@Url.Action("viewAvailableQuotes", "Admin")'">View Available Quotes</button>
 
             </div>
 
             <div class="row" style="margin-top:30px;">
-                <button type="button" onclick="location.href='@Url.Action("changeStatusToTransit", "Admin")'">Change Status of order to Transit</button>
+                <button type="button" style="width:100%;" class="btn-default" onclick="location.href='@Url.Action("updateOrderAsConfirmedToTransportOwner", "Admin")'">update order as Confirmed to Transport Owner</button>
+
+            </div>
+
+            <div class="row" style="margin-top:30px;">
+                <button type="button" style="width:100%;" class="btn-default" onclick="location.href='@Url.Action("changeStatusToTransit", "Admin")'">Change Status of order to Transit</button>
 
             </div>
             <div class="row" style="margin-top:30px;">
-                <button type="button" onclick="location.href='@Url.Action("changeStatusToCompleted", "Admin")'">Change Status of order to Completed</button>
+                <button type="button" style="width:100%;" class="btn-default" onclick="location.href='@Url.Action("changeStatusToCompleted", "Admin")'">Change Status of order to Completed</button>
 
             </div>
             <div class="row" style="margin-top:30px;">
-                <button type="button" onclick="location.href='@Url.Action("showClients", "Admin")'">Show client list</button>
+                <button type="button" style="width:100%;" class="btn-default" onclick="location.href='@Url.Action("showClients", "Admin")'">Show client list</button>
 
             </div>
             <div class="row" style="margin-top:30px;">
-                <button type="button" onclick="location.href='@Url.Action("showTOs", "Admin")'">Show TO list</button>
+                <button type="button" style="width:100%;" class="btn-default" onclick="location.href='@Url.Action("showTOs", "Admin")'">Show TO list</button>
 
             </div>
 
