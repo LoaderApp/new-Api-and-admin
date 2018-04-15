@@ -3,16 +3,38 @@
     ViewBag.Title = "SignIn";
 }
 
-<h2>SignIn</h2>
 
 <body style="background-color:cadetblue;">
-<form action="/Admin/SignInMethod" method="post">
-    <p>
-       UserName:<input type="text"  name="UserName"/>
-    </p>
-    <p>
-        Password:<input type="password" name="Password" />
-    </p>
-    <input type="submit" value="LogIn" />
-</form>
+
+    <h2>SignIn</h2>
+
+    <div class="row">
+        
+        <div class="col-lg-4">
+
+
+            <form action="/Admin/SignInMethod" method="post">
+                <p style="width:100%">
+                    UserName:<input type="text" name="UserName" />
+                </p>
+                <p style="width:100%">
+                    Password:  <input type="password" name="Password" />
+                </p>
+
+                <p style="width:100%">
+                    <input type="submit" value="LogIn" class="btn-primary" />
+
+                </p>
+            </form>
+
+        </div>
+        <div class="col-lg-4">
+
+
+        </div>
+        <div class="col-lg-4"></div>
+    
+    
+    
+    </div>
     </body>
