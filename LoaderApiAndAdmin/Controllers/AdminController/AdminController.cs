@@ -1,5 +1,6 @@
 ﻿using LoaderApiAndAdmin.DataBase;
 using LoaderApiAndAdmin.Models;
+using LoaderApiAndAdmin.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace LoadProject.Controllers.AdminController
         public ActionResult SignIn()
         {
             return View();
-
         }
 
         [HttpPost]

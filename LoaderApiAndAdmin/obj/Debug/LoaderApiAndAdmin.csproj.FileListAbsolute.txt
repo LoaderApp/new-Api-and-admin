@@ -108,3 +108,10 @@ C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\System.Web.Http.Web
 C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\obj\Debug\LoaderApiAndAdmin.csprojResolveAssemblyReference.cache
 C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\obj\Debug\LoaderApiAndAdmin.dll
 C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\obj\Debug\LoaderApiAndAdmin.pdb
+C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\PushSharp.Amazon.dll
+C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\PushSharp.Apple.dll
+C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\PushSharp.Blackberry.dll
+C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\PushSharp.Core.dll
+C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\PushSharp.Firefox.dll
+C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\PushSharp.Google.dll
+C:\Users\Abc\Desktop\new-Api-and-admin\LoaderApiAndAdmin\bin\PushSharp.Windows.dll

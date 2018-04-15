@@ -231,6 +231,7 @@
     </Compile>
     <Compile Include="MappingInitializer.cs" />
     <Compile Include="Models\SubmitQuoteInput.cs" />
+    <Compile Include="Notifications\Notifications.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
