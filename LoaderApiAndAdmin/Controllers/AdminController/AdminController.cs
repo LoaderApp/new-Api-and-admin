@@ -1,11 +1,17 @@
 ﻿using LoaderApiAndAdmin.DataBase;
 using LoaderApiAndAdmin.Models;
 using LoaderApiAndAdmin.Notifications;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace LoadProject.Controllers.AdminController
 {
@@ -92,8 +98,14 @@ namespace LoadProject.Controllers.AdminController
             if (Session["SignIn"] != null)
             {
 
+                Notifications.SendPushNotification("fUgPI4UUHHM:APA91bFE7tUHongWx4TphScu96RFZc1dieL2dqJ23lXE4K9qCiB3gcFnIsF7d4V-KIo0EAGzvb0__PCqmmHgfiGU6qhd1niEApFzt5bt1DtTsjeW_BNQCI_N_w1fEIs-pe0RYdJizSnU", "testing Push online");
+
+
                 ViewBag.QuotesDetail = new LoaderAppEntites().Quotes.Where(e => e.OrderId == id).ToList();
                 return View();
+
+
+
             }
             return RedirectToAction("SignIn");
 
