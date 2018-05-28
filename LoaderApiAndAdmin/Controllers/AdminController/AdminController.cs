@@ -263,6 +263,16 @@ namespace LoadProject.Controllers.AdminController
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 var order = dbContext.Orders.Where(e => e.Id == Id).FirstOrDefault();
                 order.OrderStatus = "In Transit";
+
+
+                var client = dbContext.Users.Where(e => e.Id == order.ClientId).FirstOrDefault();
+
+                var devId = client.DevId;
+                var msg = "Hey " + client.FirstName + " " + client.LastName + " Your order is In Transit";
+
+                Notifications.SendPushNotification(devId, msg);
+
+
                 dbContext.SaveChanges();
                 return RedirectToAction("changeStatusToTransit");
             }
