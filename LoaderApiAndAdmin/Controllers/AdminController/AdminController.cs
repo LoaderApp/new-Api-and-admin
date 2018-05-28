@@ -98,7 +98,7 @@ namespace LoadProject.Controllers.AdminController
             if (Session["SignIn"] != null)
             {
 
-                Notifications.SendPushNotification("fUgPI4UUHHM:APA91bFE7tUHongWx4TphScu96RFZc1dieL2dqJ23lXE4K9qCiB3gcFnIsF7d4V-KIo0EAGzvb0__PCqmmHgfiGU6qhd1niEApFzt5bt1DtTsjeW_BNQCI_N_w1fEIs-pe0RYdJizSnU", "testing Push online");
+//                Notifications.SendPushNotification("fUgPI4UUHHM:APA91bFE7tUHongWx4TphScu96RFZc1dieL2dqJ23lXE4K9qCiB3gcFnIsF7d4V-KIo0EAGzvb0__PCqmmHgfiGU6qhd1niEApFzt5bt1DtTsjeW_BNQCI_N_w1fEIs-pe0RYdJizSnU", "testing Push online");
 
 
                 ViewBag.QuotesDetail = new LoaderAppEntites().Quotes.Where(e => e.OrderId == id).ToList();
@@ -156,6 +156,11 @@ namespace LoadProject.Controllers.AdminController
                 var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
                 vehicle.VehicleIsBooked = true;
 
+                var transportOwner = dbContext.Users.Where(e => e.Id == quote.TransportOwnerId).FirstOrDefault();
+
+                var devId = transportOwner.DevId;
+                var msg = "Hey" + transportOwner.FirstName + " " + transportOwner.LastName + " Your Qutoe has been accepted";
+                Notifications.SendPushNotification(devId, msg);
 
                 //hamza end
 
