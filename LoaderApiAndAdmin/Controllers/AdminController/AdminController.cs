@@ -263,7 +263,8 @@ namespace LoadProject.Controllers.AdminController
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 var order = dbContext.Orders.Where(e => e.Id == Id).FirstOrDefault();
                 order.OrderStatus = "In Transit";
-
+                var quote = dbContext.Quotes.Where(e => e.OrderId == Id).FirstOrDefault();
+                quote.QuoteStatus = "Confirm Transit";
 
                 var client = dbContext.Users.Where(e => e.Id == order.ClientId).FirstOrDefault();
 
