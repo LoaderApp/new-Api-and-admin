@@ -156,10 +156,10 @@ namespace LoadProject.Controllers.AdminController
                 var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
                 vehicle.VehicleIsBooked = true;
 
-                var transportOwner = dbContext.Users.Where(e => e.Id == quote.TransportOwnerId).FirstOrDefault();
+                var client = dbContext.Users.Where(e => e.Id == orderToUpdate.ClientId).FirstOrDefault();
 
-                var devId = transportOwner.DevId;
-                var msg = "Hey" + transportOwner.FirstName + " " + transportOwner.LastName + " Your Qutoe has been accepted";
+                var devId = client.DevId;
+                var msg = "Hey" + client.FirstName + " " + client.LastName + " You Have an order pending for budget approval";
                 Notifications.SendPushNotification(devId, msg);
 
                 //hamza end
