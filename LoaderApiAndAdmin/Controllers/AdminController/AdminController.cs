@@ -309,6 +309,11 @@ namespace LoadProject.Controllers.AdminController
                 quote.QuoteStatus = "Job Completed";
 
                 var client = dbContext.Users.Where(e => e.Id == order.ClientId).FirstOrDefault();
+                var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
+
+                vehicle.VehicleIsBooked = false;
+
+
 
                 var devId = client.DevId;
                 var msg = "Hey " + client.FirstName + " " + client.LastName + " Your order is Completed";
