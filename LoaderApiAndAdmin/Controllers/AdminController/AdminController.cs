@@ -159,7 +159,7 @@ namespace LoadProject.Controllers.AdminController
                 var client = dbContext.Users.Where(e => e.Id == orderToUpdate.ClientId).FirstOrDefault();
 
                 var devId = client.DevId;
-                var msg = "Hey" + client.FirstName + " " + client.LastName + " You Have an order pending for budget approval";
+                var msg = "Hey " + client.FirstName + " " + client.LastName + " You Have an order pending for budget approval";
                 Notifications.SendPushNotification(devId, msg);
 
                 //hamza end
@@ -214,6 +214,17 @@ namespace LoadProject.Controllers.AdminController
                 var order = dbContext.Orders.Where(e => e.Id == id).FirstOrDefault();
                 order.OrderStatus = "Confirmed";
                 quotes.QuoteStatus = "Confirmed";
+
+                var transportOwner = dbContext.Users.Where(e => e.Id == order.TransportOwnerId).FirstOrDefault();
+
+                var devId = transportOwner.DevId;
+                var msg = "Hey " + transportOwner.FirstName + " " + transportOwner.LastName + " Your Quote Has been accepted";
+                Notifications.SendPushNotification(devId, msg);
+
+
+
+
+
                 dbContext.SaveChanges();
 
                 return RedirectToAction("updateOrderAsConfirmedToTransportOwner");
