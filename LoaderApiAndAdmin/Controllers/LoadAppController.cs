@@ -400,8 +400,11 @@ namespace LoaderAppApi.Controllers
                 LoaderAppEntites dbContext = new LoaderAppEntites();
 
                 var isAlreadyQuoted = dbContext.Quotes.FirstOrDefault(e => e.OrderId == input.OrderId && e.TransportOwnerId == input.TransportOwnerId);
+                var vehicle = dbContext.Vehicles.Where(e => e.UserId == input.TransportOwnerId).FirstOrDefault();
 
-                if (isAlreadyQuoted == null)
+
+
+                if (isAlreadyQuoted == null  && vehicle.VehicleIsBooked != true)
                 {
                     Quote quote = new Quote();
 
@@ -426,7 +429,7 @@ namespace LoaderAppApi.Controllers
                     {
                         isQuoteAdded = false,
                         exception = "null",
-                        message = "Already Quoted This Order"
+                        message = "Already Quoted This Order or Vehicle is booked"
 
                     };
 
