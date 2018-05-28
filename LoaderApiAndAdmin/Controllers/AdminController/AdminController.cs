@@ -306,6 +306,16 @@ namespace LoadProject.Controllers.AdminController
                 var quote = dbContext.Quotes.Where(e => e.OrderId == Id).SingleOrDefault();
                 order.OrderStatus = "Completed";
                 quote.QuoteStatus = "Job Completed";
+
+                var client = dbContext.Users.Where(e => e.Id == order.ClientId).FirstOrDefault();
+
+                var devId = client.DevId;
+                var msg = "Hey " + client.FirstName + " " + client.LastName + " Your order is Completed";
+
+                Notifications.SendPushNotification(devId, msg);
+
+
+
                 dbContext.SaveChanges();
 
                 return RedirectToAction("changeStatusToCompleted");
