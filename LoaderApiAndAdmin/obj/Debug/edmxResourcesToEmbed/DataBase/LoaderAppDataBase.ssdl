@@ -55,7 +55,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ImgId" Type="int" />
+    <Property Name="ImgId" Type="nvarchar(max)" />
     <Property Name="Email" Type="varchar" MaxLength="50" />
     <Property Name="Password" Type="varchar" MaxLength="50" />
     <Property Name="FirstName" Type="varchar" MaxLength="50" />
@@ -103,18 +103,6 @@
       </Principal>
       <Dependent Role="Quotes">
         <PropertyRef Name="TransportOwnerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_User_Images">
-    <End Role="Images" Type="Self.Images" Multiplicity="0..1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Images">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="ImgId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -187,10 +175,6 @@
     <AssociationSet Name="FK_Quotes_User" Association="Self.FK_Quotes_User">
       <End Role="User" EntitySet="User" />
       <End Role="Quotes" EntitySet="Quotes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_Images" Association="Self.FK_User_Images">
-      <End Role="Images" EntitySet="Images" />
-      <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK_Vehicle_Images" Association="Self.FK_Vehicle_Images">
       <End Role="Images" EntitySet="Images" />

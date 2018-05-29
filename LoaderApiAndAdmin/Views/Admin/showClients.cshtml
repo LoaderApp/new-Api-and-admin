@@ -24,7 +24,7 @@
                 <td>@clients.Email</td>
                 <td>@clients.PhoneNo</td>
                 <td>@clients.CompanyName</td>
-                <td><a style="color:red;" href=@Url.Action("#", "Admin",new { id= clients.Id })>Delete</a></td>
+                <td><a style="color:red;" href=@Url.Action("DeleteSingleClient", "Admin",new { id= clients.Id })>Delete</a></td>
             </tr>
         }
 

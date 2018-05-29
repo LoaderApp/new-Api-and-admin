@@ -17,7 +17,6 @@ namespace LoaderApiAndAdmin.DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Image()
         {
-            this.Users = new HashSet<User>();
             this.Vehicles = new HashSet<Vehicle>();
         }
     
@@ -25,8 +24,6 @@ namespace LoaderApiAndAdmin.DataBase
         public string ImageData { get; set; }
         public string ImageType { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vehicle> Vehicles { get; set; }
     }

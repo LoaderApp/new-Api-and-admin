@@ -56,6 +56,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Quotes">
+      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Quote">
+        <MappingFragment StoreEntitySet="Quotes">
+          <ScalarProperty Name="TransportOwnerName" ColumnName="TransportOwnerName" />
+          <ScalarProperty Name="QuoteStatus" ColumnName="QuoteStatus" />
+          <ScalarProperty Name="QuoteBudget" ColumnName="QuoteBudget" />
+          <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -97,18 +109,6 @@
           <ScalarProperty Name="VehicleRegNo" ColumnName="VehicleRegNo" />
           <ScalarProperty Name="VehicleImgId" ColumnName="VehicleImgId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Quotes">
-      <EntityTypeMapping TypeName="db4548dfcaf1014e63b356a82e00d3f007Model.Quote">
-        <MappingFragment StoreEntitySet="Quotes">
-          <ScalarProperty Name="TransportOwnerName" ColumnName="TransportOwnerName" />
-          <ScalarProperty Name="QuoteStatus" ColumnName="QuoteStatus" />
-          <ScalarProperty Name="QuoteBudget" ColumnName="QuoteBudget" />
-          <ScalarProperty Name="TransportOwnerId" ColumnName="TransportOwnerId" />
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -63,7 +63,7 @@ namespace LoadProject.Controllers.AdminController
                 var listOfOrders = new List<Order>();
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 // AllOrderS From Order Table
-                ViewBag.OrderData = dbContext.Orders.Where(e => e.OrderStatus !="x").ToList();
+                ViewBag.OrderData = dbContext.Orders.Where(e => e.OrderStatus != "x").ToList();
                 return View();
             }
             return RedirectToAction("SignIn");
@@ -80,7 +80,7 @@ namespace LoadProject.Controllers.AdminController
                 var check1 = "Pending";
                 var check2 = "Rejected";
 
-                ViewBag.QuotesData = dbContext.Orders.Where(e => (e.OrderStatus == check1 || e.OrderStatus == check2) ).ToList();
+                ViewBag.QuotesData = dbContext.Orders.Where(e => (e.OrderStatus == check1 || e.OrderStatus == check2)).ToList();
                 return View();
             }
             return RedirectToAction("SignIn");
@@ -98,7 +98,7 @@ namespace LoadProject.Controllers.AdminController
             if (Session["SignIn"] != null)
             {
 
-//                Notifications.SendPushNotification("fUgPI4UUHHM:APA91bFE7tUHongWx4TphScu96RFZc1dieL2dqJ23lXE4K9qCiB3gcFnIsF7d4V-KIo0EAGzvb0__PCqmmHgfiGU6qhd1niEApFzt5bt1DtTsjeW_BNQCI_N_w1fEIs-pe0RYdJizSnU", "testing Push online");
+                //                Notifications.SendPushNotification("fUgPI4UUHHM:APA91bFE7tUHongWx4TphScu96RFZc1dieL2dqJ23lXE4K9qCiB3gcFnIsF7d4V-KIo0EAGzvb0__PCqmmHgfiGU6qhd1niEApFzt5bt1DtTsjeW_BNQCI_N_w1fEIs-pe0RYdJizSnU", "testing Push online");
 
 
                 ViewBag.QuotesDetail = new LoaderAppEntites().Quotes.Where(e => e.OrderId == id).ToList();
@@ -114,7 +114,7 @@ namespace LoadProject.Controllers.AdminController
 
 
         }
-        public ActionResult AcceptQuote(int id =0)
+        public ActionResult AcceptQuote(int id = 0)
         {
             //Session["SignIn"] = false;
             if (Session["SignIn"] != null)
@@ -135,7 +135,7 @@ namespace LoadProject.Controllers.AdminController
 
         }
 
-        public ActionResult SubmitQuote(SubmitQuoteInput model, int id )
+        public ActionResult SubmitQuote(SubmitQuoteInput model, int id)
         {
 
 
@@ -234,7 +234,7 @@ namespace LoadProject.Controllers.AdminController
 
         }
 
-        
+
 
 
         public ActionResult changeStatusToTransit()
@@ -349,6 +349,58 @@ namespace LoadProject.Controllers.AdminController
         }
 
 
+
+        public ActionResult DeleteSingleClient(int id)
+        {
+
+            //Session["SignIn"] = false;
+            if (Session["SignIn"] != null)
+            {
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+                var userToDelete = dbContext.Users.Single(e => e.Id == id);
+                dbContext.Orders.Where(e => e.ClientId == id).ToList().ForEach(e =>
+                {
+                    dbContext.Orders.Remove(e);
+                });
+                dbContext.Users.Remove(userToDelete);
+                dbContext.SaveChanges();
+
+                return RedirectToAction("showClients");
+            }
+            return RedirectToAction("SignIn");
+
+
+
+        }
+        public ActionResult DeleteSingleTo(int id)
+        {
+
+            //Session["SignIn"] = false;
+            if (Session["SignIn"] != null)
+            {
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+                var userToDelete = dbContext.Users.Single(e => e.Id == id);
+
+
+                dbContext.Quotes.Where(e => e.TransportOwnerId == id).ToList().ForEach(e =>
+                {
+                    dbContext.Quotes.Remove(e);
+                });
+
+                var vehicle = dbContext.Vehicles.Single(e => e.UserId == id);
+                dbContext.Vehicles.Remove(vehicle);
+                dbContext.Users.Remove(userToDelete);
+                dbContext.SaveChanges();
+
+                return RedirectToAction("showTOs");
+            }
+            return RedirectToAction("SignIn");
+
+
+
+        }
+
+
         public ActionResult showTOs()
         {
 
@@ -372,6 +424,6 @@ namespace LoadProject.Controllers.AdminController
         public string UserName { get; set; }
 
         public string Password { get; set; }
-        
+
     }
 }

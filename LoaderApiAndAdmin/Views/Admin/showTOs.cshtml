@@ -14,6 +14,8 @@
             <th>Email</th>
             <th>Contact No</th>
             <th>Company Name</th>
+            <th>Delete TO</th>
+
         </tr>
         @foreach (var Tos in @ViewBag.TosData)
         {
@@ -23,6 +25,8 @@
                 <td>@Tos.Email</td>
                 <td>@Tos.PhoneNo</td>
                 <td>@Tos.CompanyName</td>
+                <td><a style="color:red;" href=@Url.Action("DeleteSingleTo", "Admin",new { id= Tos.Id })>Delete</a></td>
+
             </tr>
         }
 
