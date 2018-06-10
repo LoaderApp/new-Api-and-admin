@@ -258,15 +258,30 @@ namespace LoaderAppApi.Controllers
         {
             try
             {
+
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 var order= dbContext.Orders.Where(e => e.Id == Input.OrderId).Single();
                 order.OrderStatus = Input.Status;
                 dbContext.SaveChanges();
-                return new
+
+
+                if (Input.Status.Equals("Accepted"))
                 {
-                    IsOrderAccepted = true,
-                    ErrorException = "null"
-                };
+                    return new
+                    {
+                        IsOrderAccepted = true,
+                        ErrorException = "null"
+                    };
+
+                }
+                else {
+                    return new
+                    {
+                        IsOrderAccepted = false,
+                        ErrorException = "null"
+                    };
+
+                }
             }
             catch (Exception ex)
             {
