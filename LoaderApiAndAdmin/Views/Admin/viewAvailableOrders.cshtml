@@ -21,6 +21,7 @@
             <th>AdditionalDetails</th>
             <th>Status</th>
             <th>Budget</th>
+            <th>Delete Order</th>
         </tr>
         @{
             foreach (var order in @ViewBag.OrderData)
@@ -51,6 +52,8 @@
 
                     }
                     <td>@order.OrderBudget</td>
+                    <td><a style="color:red;" href=@Url.Action("DeleteSingleOrder", "Admin",new { id= order.Id })>Delete</a></td>
+
                 </tr>
             }
         }

@@ -372,6 +372,29 @@ namespace LoadProject.Controllers.AdminController
 
 
         }
+        public ActionResult DeleteSingleOrder(int id)
+        {
+
+            //Session["SignIn"] = false;
+            if (Session["SignIn"] != null)
+            {
+                LoaderAppEntites dbContext = new LoaderAppEntites();
+                var orderToDelete = dbContext.Orders.Single(e => e.Id == id);
+                dbContext.Quotes.Where(e => e.OrderId == id).ToList().ForEach(e =>
+                {
+                    dbContext.Quotes.Remove(e);
+                });
+                dbContext.Orders.Remove(orderToDelete);
+                dbContext.SaveChanges();
+
+                return RedirectToAction("viewAvailableOrders");
+            }
+            return RedirectToAction("SignIn");
+
+
+
+        }
+
         public ActionResult DeleteSingleTo(int id)
         {
 
