@@ -20,19 +20,19 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientId" Type="int" />
           <Property Name="TransportOwnerId" Type="int" />
-          <Property Name="OrderPickup" Type="varchar" MaxLength="50" />
-          <Property Name="OrderDropOff" Type="varchar" MaxLength="50" />
-          <Property Name="OrderComodity" Type="varchar" MaxLength="50" />
-          <Property Name="OrderWeight" Type="varchar" MaxLength="50" />
+          <Property Name="OrderPickup" Type="nvarchar(max)" />
+          <Property Name="OrderDropOff" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderComodity" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderWeight" Type="nvarchar" MaxLength="50" />
           <Property Name="OrderPickUpDate" Type="datetime" />
-          <Property Name="OrderLength" Type="varchar" MaxLength="50" />
-          <Property Name="OrderWidth" Type="varchar" MaxLength="50" />
-          <Property Name="OrderHeight" Type="varchar" MaxLength="50" />
-          <Property Name="OrderReceiverName" Type="varchar" MaxLength="50" />
-          <Property Name="OrderReceiverCompanyName" Type="varchar" MaxLength="50" />
-          <Property Name="OrderAdditionalDetails" Type="varchar" MaxLength="50" />
-          <Property Name="OrderStatus" Type="varchar" MaxLength="50" />
-          <Property Name="OrderBudget" Type="varchar" MaxLength="50" />
+          <Property Name="OrderLength" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderWidth" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderHeight" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderReceiverName" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderReceiverCompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderAdditionalDetails" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderBudget" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Quotes">
           <Key>
@@ -41,9 +41,9 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="TransportOwnerId" Type="int" Nullable="false" />
-          <Property Name="QuoteBudget" Type="varchar" MaxLength="50" />
-          <Property Name="QuoteStatus" Type="varchar" MaxLength="50" />
-          <Property Name="TransportOwnerName" Type="varchar" MaxLength="50" />
+          <Property Name="QuoteBudget" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuoteStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransportOwnerName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -61,13 +61,13 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ImgId" Type="nvarchar(max)" />
-          <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="Password" Type="varchar" MaxLength="50" />
-          <Property Name="FirstName" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
-          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
-          <Property Name="Role" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
           <Property Name="DevId" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Vehicle">
@@ -77,14 +77,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="VehicleImgId" Type="int" />
-          <Property Name="VehicleRegNo" Type="varchar" MaxLength="50" />
-          <Property Name="VehicleName" Type="varchar" MaxLength="50" />
-          <Property Name="VehichleCompany" Type="varchar" MaxLength="50" />
-          <Property Name="VehicleColor" Type="varchar" MaxLength="50" />
-          <Property Name="VehicleNoOfWheels" Type="varchar" MaxLength="50" />
-          <Property Name="VehicleLength" Type="varchar" MaxLength="50" />
-          <Property Name="VehicleWidth" Type="varchar" MaxLength="50" />
-          <Property Name="VehichleHeight" Type="varchar" MaxLength="50" />
+          <Property Name="VehicleRegNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehichleCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleNoOfWheels" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleLength" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehicleWidth" Type="nvarchar" MaxLength="50" />
+          <Property Name="VehichleHeight" Type="nvarchar" MaxLength="50" />
           <Property Name="VehicleIsBooked" Type="bit" />
         </EntityType>
         <Association Name="FK_Quotes_Order">
@@ -275,19 +275,19 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientId" Type="Int32" />
           <Property Name="TransportOwnerId" Type="Int32" />
-          <Property Name="OrderPickup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderDropOff" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderComodity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderPickup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDropOff" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderComodity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OrderPickUpDate" Type="DateTime" Precision="3" />
-          <Property Name="OrderLength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderReceiverCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderAdditionalDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderLength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderReceiverCompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderAdditionalDetails" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Order" ToRole="Quote" />
         </EntityType>
         <EntityType Name="Quote">
@@ -297,9 +297,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="TransportOwnerId" Type="Int32" Nullable="false" />
-          <Property Name="QuoteBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="QuoteStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TransportOwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QuoteBudget" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuoteStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransportOwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Quote" ToRole="Order" />
           <NavigationProperty Name="User" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="Quote" ToRole="User" />
         </EntityType>
@@ -319,13 +319,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImgId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DevId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Quotes" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="User" ToRole="Quote" />
           <NavigationProperty Name="Vehicles" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User" FromRole="User" ToRole="Vehicle" />
@@ -337,14 +337,14 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="VehicleImgId" Type="Int32" />
-          <Property Name="VehicleRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehichleCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleNoOfWheels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleLength" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehicleWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="VehichleHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehicleRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehichleCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleNoOfWheels" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleLength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehicleWidth" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VehichleHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="VehicleIsBooked" Type="Boolean" />
           <NavigationProperty Name="Image" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_Images" FromRole="Vehicle" ToRole="Image" />
           <NavigationProperty Name="User" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_User" FromRole="Vehicle" ToRole="User" />
