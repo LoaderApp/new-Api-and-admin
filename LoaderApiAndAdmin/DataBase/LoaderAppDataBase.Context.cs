@@ -30,6 +30,7 @@ namespace LoaderApiAndAdmin.DataBase
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Quote> Quotes { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
