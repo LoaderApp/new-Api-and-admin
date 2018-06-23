@@ -8,6 +8,7 @@
     <h2>Available Orders</h2>
     <table style="width:100%">
         <tr>
+            <th>Id</th>
             <th>Pick Up</th>
             <th>Drop Off</th>
             <th>Comodity</th>
@@ -27,6 +28,7 @@
             foreach (var order in @ViewBag.OrderData)
             {
                 <tr>
+                    <td>@order.Id</td>
                     <td>@order.OrderPickup</td>
                     <td>@order.OrderDropOff</td>
                     <td>@order.OrderComodity</td>
