@@ -34,6 +34,7 @@
     <EntitySet Name="Images" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Image" />
     <EntitySet Name="Orders" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Order" />
     <EntitySet Name="Quotes" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" />
+    <EntitySet Name="Ratings" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Rating" />
     <EntitySet Name="sysdiagrams" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram" />
     <EntitySet Name="Users" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.User" />
     <EntitySet Name="Vehicles" EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" />
@@ -108,6 +109,14 @@
     <Property Name="TransportOwnerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Order" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" FromRole="Quote" ToRole="Order" />
     <NavigationProperty Name="User" Relationship="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" FromRole="Quote" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ToId" Type="Int32" Nullable="false" />
+    <Property Name="Rating1" Type="Int32" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

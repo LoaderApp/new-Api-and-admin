@@ -211,6 +211,9 @@
     <Compile Include="DataBase\Quote.cs">
       <DependentUpon>LoaderAppDataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataBase\Rating.cs">
+      <DependentUpon>LoaderAppDataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataBase\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>LoaderAppDataBase.tt</DependentUpon>
     </Compile>
