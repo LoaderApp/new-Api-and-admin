@@ -16,8 +16,8 @@
     <Property Name="ClientId" Type="int" />
     <Property Name="TransportOwnerId" Type="int" />
     <Property Name="OrderPickup" Type="nvarchar(max)" />
-    <Property Name="OrderDropOff" Type="nvarchar" MaxLength="50" />
-    <Property Name="OrderComodity" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderDropOff" Type="nvarchar(max)" />
+    <Property Name="OrderComodity" Type="nvarchar(max)" />
     <Property Name="OrderWeight" Type="nvarchar" MaxLength="50" />
     <Property Name="OrderPickUpDate" Type="datetime" />
     <Property Name="OrderLength" Type="nvarchar" MaxLength="50" />

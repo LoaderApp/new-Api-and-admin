@@ -83,8 +83,8 @@
     <Property Name="ClientId" Type="Int32" />
     <Property Name="TransportOwnerId" Type="Int32" />
     <Property Name="OrderPickup" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="OrderDropOff" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="OrderComodity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDropOff" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrderComodity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="OrderWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="OrderPickUpDate" Type="DateTime" Precision="3" />
     <Property Name="OrderLength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
