@@ -38,7 +38,7 @@ namespace LoaderAppApi.Controllers
                 }
                 else
                 {
-                    var itemToUpdate = dbContext.Users.Single(e => e.Id == Input.Id);
+                    var itemToUpdate = dbContext.Users.Single(e => e.PhoneNo == Input.PhoneNo);
 
                     itemToUpdate.FirstName = Input.FirstName;
                     itemToUpdate.LastName = Input.LastName;
