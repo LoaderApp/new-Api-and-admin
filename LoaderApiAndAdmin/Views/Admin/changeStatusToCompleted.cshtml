@@ -6,46 +6,52 @@
 <body style="background-color:cadetblue;">
 
     <style>
-        *{
-    margin: 0;
-    padding: 0;
-}
-.rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-.rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-}
-.rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
-}
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-.rate > input:checked ~ label {
-    color: #ffc700;    
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+            .rate:not(:checked) > input {
+                position: absolute;
+                top: -9999px;
+            }
+
+            .rate:not(:checked) > label {
+                float: right;
+                width: 1em;
+                overflow: hidden;
+                white-space: nowrap;
+                cursor: pointer;
+                font-size: 30px;
+                color: #ccc;
+            }
+
+                .rate:not(:checked) > label:before {
+                    content: '★ ';
+                }
+
+            .rate > input:checked ~ label {
+                color: #ffc700;
+            }
+
+            .rate:not(:checked) > label:hover,
+            .rate:not(:checked) > label:hover ~ label {
+                color: #deb217;
+            }
+
+            .rate > input:checked + label:hover,
+            .rate > input:checked + label:hover ~ label,
+            .rate > input:checked ~ label:hover,
+            .rate > input:checked ~ label:hover ~ label,
+            .rate > label:hover ~ input:checked ~ label {
+                color: #c59b08;
+            }
     </style>
     <h2>change Status To Completed</h2>
     <table style="width:100%">
@@ -58,52 +64,99 @@
             <th>Rate To</th>
             <th>Action</th>
         </tr>
-        @foreach (var completed in @ViewBag.CompletedOrders)
-        {
-            <tr>
-                <td>@completed.OrderId</td>
-                <td>@completed.TransportOwnerId</td>
-                <td>@completed.TransportOwnerName</td>
-                <td>@completed.QuoteBudget</td>
-                <td>@completed.QuoteStatus</td>
+        @{
+            var counter = 1;
+            foreach (var completed in @ViewBag.CompletedOrders)
+            {
+                <tr>
+                    <td>@completed.OrderId</td>
+                    <td>@completed.TransportOwnerId</td>
+                    <td>@completed.TransportOwnerName</td>
+                    <td>@completed.QuoteBudget</td>
+                    <td>@completed.QuoteStatus</td>
 
-                <td>
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
+                    <td>
+                        <div class="rate">
+                            <input type="radio" id="star5" name="@completed.rating" value="5" onclick="radioButtonClick()" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="@completed.rating" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="@completed.rating" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="@completed.rating" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="@completed.rating" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
 
-                </td>
-                <td><a href=@Url.Action("ConfirmCompleted", "Admin", new { id = completed.OrderId })>Confirm Completed</a></td>
-            </tr>
+                    </td>
+                    @*<td><a href=@Url.Action("ConfirmCompleted", "Admin", new { id = completed.OrderId, ToId = completed.TransportOwnerId, Rating = completed.rating })>Confirm Completed</a></td>*@
+                    <td><a onclick="ConfirmActionLinkClicked(@completed.OrderId, @completed.TransportOwnerId)">Confirm Completed</a></td>
+
+                    <td>@*<a href=@Url.Action("ConfirmCompleted", "Admin", new { id = completed.OrderId, ToId = completed.TransportOwnerId, Rating = "rate" })>Confirm Completed</a>*@</td>
+
+                </tr>
+            }
         }
 
     </table>
 
     @section scripts{
-        
-    <script>
 
-    $(document).ready(function () {
-        $('input[type=radio]').live('change', function()
-        {
-            alert($(this).val());
-        });
+        <script>
 
-    });
+            $(document).ready(function () {
+                //$('input[type=radio]').live('change', function()
+                //{
+                //    alert($(this).val());
+                //});
 
-    </script>
-        
-        }
+                $(".BookName").click(function (event) {
+                    event.preventDefault();
+                    var url = '@Url.Action("ConfirmCompleted", "Admin", new { id = "PARENT_ID", ToId = "USER_ID"})';
+                    url = url.replace("USER_ID", $("#USERID").val());
+                    url = url.replace("PARENT_ID", $(this).data("id"));
+                    alert(url); //just for debugging
+                    window.location.href = url;
+                });
+
+            });
+
+            function ConfirmActionLinkClicked(OrderId, TOId) {
+                debugger;
+                var rating = 0;
+                if (document.getElementById('star5').checked) {
+                    rating = 5;
+                }
+                else if (document.getElementById('star4').checked) {
+                    rating = 4;
+                }
+                else if (document.getElementById('star3').checked) {
+                    rating = 3;
+                }
+                else if (document.getElementById('star2').checked) {
+                    rating = 2;
+                }
+                else if (document.getElementById('star1').checked) {
+                    rating = 1;
+                }
+
+                var ToIdLocal = TOId + " " + rating;
+                var url = '@Url.Action("ConfirmCompleted", "Admin", new { id = "PARENT_ID", ToId = "USER_ID"})';
+                url = url.replace("PARENT_ID", OrderId);
+                url = url.replace("USER_ID", ToIdLocal);
+                //url = url.replace("RATING_RATE", rating);
+                window.location.href = url;
+            }
+            function radioButtonClick() {
+                debugger;
+                var value2 = document.getElementById('44+star5');
+                var value = document.getElementById('44+star5').checked;
+                alert(document.getElementById('44+star5').value);
+            }
+
+        </script>
+
+    }
 
 </body>
-
-

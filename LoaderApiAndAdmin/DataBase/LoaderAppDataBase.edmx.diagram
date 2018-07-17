@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ab10a9fd691b412aac3dcdcc412e0396" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Image" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Order" Width="1.5" PointX="3.75" PointY="9.5" />
-        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" Width="1.5" PointX="6" PointY="4.375" />
-        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Rating" Width="1.5" PointX="5.75" PointY="1.75" />
-        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram" Width="1.5" PointX="5.75" PointY="7.75" />
-        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.User" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Image" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Order" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Quote" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Rating" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.sysdiagram" Width="1.5" PointX="4.75" PointY="7.75" />
+        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.User" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="db4548dfcaf1014e63b356a82e00d3f007Model.Vehicle" Width="1.5" PointX="6" PointY="2.875" />
         <AssociationConnector Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Vehicle_Images" />
         <AssociationConnector Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_Order" />
         <AssociationConnector Association="db4548dfcaf1014e63b356a82e00d3f007Model.FK_Quotes_User" />

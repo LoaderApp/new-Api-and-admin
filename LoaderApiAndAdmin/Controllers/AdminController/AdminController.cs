@@ -288,16 +288,29 @@ namespace LoadProject.Controllers.AdminController
             {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 var check = "Completed";
-                ViewBag.CompletedOrders = dbContext.Quotes.Where(e => e.QuoteStatus == check).ToList();
+                ViewBag.CompletedOrders = dbContext.Quotes.Where(e => e.QuoteStatus == check)
+                    .Select(e => new QuoteDto()
+                    {
+                        rating = 0,
+                        Id = e.Id,
+                        OrderId = e.OrderId,
+                        TransportOwnerId = e.TransportOwnerId,
+                        QuoteBudget = e.QuoteBudget,
+                        QuoteStatus = e.QuoteStatus,
+                        TransportOwnerName = e.TransportOwnerName,
+                    })
+                    .ToList();
                 return View();
             }
             return RedirectToAction("SignIn");
 
         }
 
-        public ActionResult ConfirmCompleted(int Id)
+        public ActionResult ConfirmCompleted(int Id, string ToId)
         {
-
+            var splitString = ToId.Split(' ');
+            var toId = Convert.ToInt32(splitString[0]);
+            var rating = Convert.ToInt32(splitString[1]);
             //Session["SignIn"] = false;
             if (Session["SignIn"] != null)
             {
@@ -307,6 +320,12 @@ namespace LoadProject.Controllers.AdminController
                 var quote = dbContext.Quotes.Where(e => e.OrderId == Id).SingleOrDefault();
                 order.OrderStatus = "Completed";
                 quote.QuoteStatus = "Job Completed";
+                dbContext.Ratings.Add(new Rating()
+                {
+                    ToId= toId,
+                    Rating1=rating
+
+                });
 
                 var client = dbContext.Users.Where(e => e.Id == order.ClientId).FirstOrDefault();
                 var vehicle = dbContext.Vehicles.Where(e => e.UserId == quote.TransportOwnerId).FirstOrDefault();
@@ -432,7 +451,16 @@ namespace LoadProject.Controllers.AdminController
             {
                 LoaderAppEntites dbContext = new LoaderAppEntites();
                 var check1 = "TransportOwner";
-                ViewBag.TosData = dbContext.Users.Where(e => e.Role == check1).ToList();
+                ViewBag.TosData = dbContext.Users.Where(e => e.Role == check1).Select(e =>
+                new UserDto()
+                {
+                    FirstName = e.FirstName,
+                    LastName = e.LastName,
+                    Email = e.Email,
+                    PhoneNo = e.PhoneNo,
+                    CompanyName = e.CompanyName,
+                    Rating = dbContext.Ratings.Where(r => r.ToId == e.Id).Sum(r => r.Rating1) / dbContext.Ratings.Where(r => r.ToId == e.Id).Count()
+                }).ToList();
                 return View();
             }
             return RedirectToAction("SignIn");
@@ -447,5 +475,39 @@ namespace LoadProject.Controllers.AdminController
 
         public string Password { get; set; }
 
+    }
+
+    public partial class QuoteDto
+    {
+        public int Id { get; set; }
+        public int OrderId { get; set; }
+        public int TransportOwnerId { get; set; }
+        public string QuoteBudget { get; set; }
+        public string QuoteStatus { get; set; }
+        public string TransportOwnerName { get; set; }
+
+        public int rating { get; set; }
+
+
+    }
+
+
+    public partial class UserDto
+    {
+      
+
+        public int Id { get; set; }
+        public string ImgId { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string CompanyName { get; set; }
+        public string PhoneNo { get; set; }
+        public string Role { get; set; }
+        public string DevId { get; set; }
+     
+       public int? Rating { get; set; }
+     
     }
 }

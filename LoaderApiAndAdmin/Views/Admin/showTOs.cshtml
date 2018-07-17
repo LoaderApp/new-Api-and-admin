@@ -11,9 +11,10 @@
         <tr>
             <th>FirstName</th>
             <th>LastName</th>
-            <th>Email</th>
-            <th>Contact No</th>
-            <th>Company Name</th>
+                <th>Email</th>
+                <th>Contact No</th>
+                <th>Company Name</th>
+            <th>Rating</th>
             <th>Delete TO</th>
 
         </tr>
@@ -22,9 +23,10 @@
             <tr>
                 <td>@Tos.FirstName</td>
                 <td>@Tos.LastName</td>
-                <td>@Tos.Email</td>
-                <td>@Tos.PhoneNo</td>
-                <td>@Tos.CompanyName</td>
+                    <td>@Tos.Email</td>
+                    <td>@Tos.PhoneNo</td>
+                    <td>@Tos.CompanyName</td>
+                <td>@Tos.Rating</td>
                 <td><a style="color:red;" href=@Url.Action("DeleteSingleTo", "Admin",new { id= Tos.Id })>Delete</a></td>
 
             </tr>

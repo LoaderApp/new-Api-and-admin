@@ -114,7 +114,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ToId" Type="Int32" Nullable="false" />
     <Property Name="Rating1" Type="Int32" />
   </EntityType>

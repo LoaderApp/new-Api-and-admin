@@ -49,7 +49,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ToId" Type="int" Nullable="false" />
           <Property Name="Rating" Type="int" />
         </EntityType>
@@ -317,7 +317,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ToId" Type="Int32" Nullable="false" />
           <Property Name="Rating1" Type="Int32" />
         </EntityType>
