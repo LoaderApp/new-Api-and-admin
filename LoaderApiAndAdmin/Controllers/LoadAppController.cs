@@ -38,11 +38,21 @@ namespace LoaderAppApi.Controllers
                 }
                 else
                 {
+                    var itemToUpdate = dbContext.Users.Single(e => e.Id == Input.Id);
+
+                    itemToUpdate.FirstName = Input.FirstName;
+                    itemToUpdate.LastName = Input.LastName;
+                    itemToUpdate.ImgId = Input.ImgId;
+                    itemToUpdate.Password = Input.Password;
+                    itemToUpdate.CompanyName = Input.CompanyName;
+
+                    dbContext.SaveChanges();
+
                     return new
                     {
-                        IsUserUpdated = false,
-                        ErrorException = "Phone No Already Exists",
-                        UserId = "-1"
+                        IsUserUpdated = true,
+                        ErrorException = "null",
+                        UserId = itemToUpdate.Id
                     };
 
                 }
